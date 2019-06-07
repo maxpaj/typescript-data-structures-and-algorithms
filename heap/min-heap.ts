@@ -8,28 +8,31 @@ export class MinHeap {
   public insert(element: number) {
     // Add element last
     this.heap.push(element);
-    let elementIndex = this.heap.length - 1;
 
-    do {
-      // Find the parent
-      let parentIndex = elementIndex % 2 === 0 ? Math.floor((elementIndex - 1) / 2) : Math.floor(elementIndex / 2);
+    // Grab the index
+    let currentIndex = this.heap.length - 1;
 
-      // If parent is bigger than element, swap them
-      if (this.heap[parentIndex] > element) {
-        const tmp = this.heap[parentIndex];
-        this.heap[parentIndex] = element;
-        this.heap[elementIndex] = tmp;
-      } else {
-        // Else, we're done
-        return;
-      }
-
-      // Set next parent
-      elementIndex = parentIndex;
-    } while (elementIndex > -1);
+    // Bubble up the element
+    this.bubble_up(currentIndex);
   }
 
-  private heapify(currentIndex: number) {
+  private bubble_up(currentIndex: number) {
+    const element = this.heap[currentIndex];
+
+    // Find the parent
+    let parentIndex = currentIndex % 2 === 0 ? Math.floor((currentIndex - 1) / 2) : Math.floor(currentIndex / 2);
+
+    // If parent is bigger than element, swap them
+    if (this.heap[parentIndex] > element) {
+      const tmp = this.heap[parentIndex];
+      this.heap[parentIndex] = element;
+      this.heap[currentIndex] = tmp;
+
+      this.bubble_up(parentIndex);
+    }
+  }
+
+  private bubble_down(currentIndex: number) {
     // Find children index
     const leftIndex = currentIndex * 2 + 1;
     const rightIndex = currentIndex * 2 + 2;
@@ -52,7 +55,7 @@ export class MinHeap {
       this.heap[currentIndex] = tmp;
       currentIndex = minIndex;
 
-      this.heapify(minIndex);
+      this.bubble_down(minIndex);
     }
   }
 
@@ -63,8 +66,8 @@ export class MinHeap {
     // Put last element on top
     this.heap[0] = this.heap.splice(-1)[0];
 
-    // Heapify
-    this.heapify(0);
+    // Bubble down the element
+    this.bubble_down(0);
 
     return remove;
   }
