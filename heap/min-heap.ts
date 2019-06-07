@@ -20,7 +20,7 @@ export class MinHeap {
     const element = this.heap[currentIndex];
 
     // Find the parent
-    let parentIndex = currentIndex % 2 === 0 ? Math.floor((currentIndex - 1) / 2) : Math.floor(currentIndex / 2);
+    let parentIndex = Math.floor((currentIndex - 1) / 2);
 
     // If parent is bigger than element, swap them
     if (this.heap[parentIndex] > element) {
