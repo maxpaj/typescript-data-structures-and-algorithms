@@ -5,6 +5,10 @@ export class MinHeap {
     this.heap = [];
   }
 
+  public isEmpty() {
+    return this.heap.length === 0;
+  }
+
   public insert(element: number) {
     // Add element last
     this.heap.push(element);
@@ -14,6 +18,31 @@ export class MinHeap {
 
     // Bubble up the element
     this.bubble_up(currentIndex);
+  }
+
+  public extract(): number {
+    // Store head
+    const head = this.heap[0];
+
+    // Remove last
+    const last = this.heap.splice(-1)[0];
+
+    // If empty, simply return the value
+    if (this.heap.length === 0) {
+      return head;
+    }
+
+    // Put last element on top
+    this.heap[0] = last;
+
+    // Bubble down the element
+    this.bubble_down(0);
+
+    return head;
+  }
+
+  public toString(): string {
+    return this.heap.join(", ");
   }
 
   private bubble_up(currentIndex: number) {
@@ -57,22 +86,5 @@ export class MinHeap {
 
       this.bubble_down(minIndex);
     }
-  }
-
-  public extract(): number {
-    // Store head
-    const remove = this.heap[0];
-
-    // Put last element on top
-    this.heap[0] = this.heap.splice(-1)[0];
-
-    // Bubble down the element
-    this.bubble_down(0);
-
-    return remove;
-  }
-
-  public toString(): string {
-    return this.heap.join(", ");
   }
 }
