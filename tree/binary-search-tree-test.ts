@@ -1,5 +1,6 @@
+import { randomArray, randomNumber } from "../utility/random";
 import { BinarySearchTree } from "./binary-search-tree";
-import { randomArray, randomNumber, test } from "../utility/random";
+import { test } from "../utility/test";
 
 function treeSearch(size: number) {
   const root = new BinarySearchTree(randomNumber(Number.MAX_SAFE_INTEGER));
