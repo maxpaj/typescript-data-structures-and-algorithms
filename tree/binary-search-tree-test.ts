@@ -1,7 +1,7 @@
 import { BinarySearchTree } from "./binary-search-tree";
-import { randomArray, randomNumber } from "../utility/random";
+import { randomArray, randomNumber, test } from "../utility/random";
 
-function run(size: number) {
+function treeSearch(size: number) {
   const root = new BinarySearchTree(randomNumber(Number.MAX_SAFE_INTEGER));
   const arr = randomArray(size, Number.MAX_SAFE_INTEGER);
 
@@ -9,17 +9,11 @@ function run(size: number) {
     root.insert(new BinarySearchTree(e));
   });
 
+  const randomElement = arr[Math.floor(Math.random() * arr.length)];
+
   const start = process.hrtime();
-  const randomSearch = arr[Math.floor(Math.random() * arr.length)];
-  const search = root.search(randomSearch);
-  if (search) console.log(search.toString());
-  else console.log("Not found");
-  console.log(process.hrtime(start));
+  root.search(randomElement);
+  return process.hrtime(start)[1];
 }
 
-run(1000);
-run(10000);
-run(100000);
-run(1000000);
-run(10000000);
-run(100000000);
+test([100000, 1000000, 10000000], treeSearch);
