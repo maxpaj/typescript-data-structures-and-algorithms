@@ -2,7 +2,7 @@ import { randomArray, randomNumber } from "../utility/random";
 import { BinarySearchTree } from "./binary-search-tree";
 import { test } from "../utility/test";
 
-function treeSearch(size: number) {
+function treeSearchTest(size: number) {
   const root = new BinarySearchTree(randomNumber(Number.MAX_SAFE_INTEGER));
   const arr = randomArray(size, Number.MAX_SAFE_INTEGER);
 
@@ -17,4 +17,4 @@ function treeSearch(size: number) {
   return process.hrtime(start)[1];
 }
 
-test([100000, 1000000, 10000000], treeSearch);
+test([100000, 1000000, 10000000], treeSearchTest);
