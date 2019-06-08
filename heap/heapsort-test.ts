@@ -1,12 +1,5 @@
 import { heapsort } from "./heapsort";
-
-function randomArray(length: number, max: number) {
-  const arr = [];
-  for (let i = 0; i < length; i++) {
-    arr.push(Math.round(Math.random() * max));
-  }
-  return arr;
-}
+import { randomArray } from "../utility/random";
 
 function run(size: number) {
   const arr = randomArray(size, Number.MAX_SAFE_INTEGER);

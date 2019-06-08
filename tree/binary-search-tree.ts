@@ -28,14 +28,12 @@ export class BinarySearchTree {
       return this;
     }
 
-    let found: BinarySearchTree = null;
-    if (this.leftChild) {
-      found = this.leftChild.search(data);
+    if (this.data > data && this.leftChild) {
+      return this.leftChild.search(data);
+    } else if (this.data < data && this.rightChild) {
+      return this.rightChild.search(data);
     }
-    if (this.rightChild) {
-      found = this.rightChild.search(data);
-    }
-    return found;
+    return null;
   }
 
   inorder() {

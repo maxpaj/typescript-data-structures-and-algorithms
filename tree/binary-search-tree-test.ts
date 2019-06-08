@@ -1,12 +1,25 @@
 import { BinarySearchTree } from "./binary-search-tree";
+import { randomArray, randomNumber } from "../utility/random";
 
-const root = new BinarySearchTree(27);
+function run(size: number) {
+  const root = new BinarySearchTree(randomNumber(Number.MAX_SAFE_INTEGER));
+  const arr = randomArray(size, Number.MAX_SAFE_INTEGER);
 
-[14, 10, 19, 35, 31, 42].forEach(e => {
-  root.insert(new BinarySearchTree(e));
-});
+  arr.forEach(e => {
+    root.insert(new BinarySearchTree(e));
+  });
 
-root.inorder();
+  const start = process.hrtime();
+  const randomSearch = arr[Math.floor(Math.random() * arr.length)];
+  const search = root.search(randomSearch);
+  if (search) console.log(search.toString());
+  else console.log("Not found");
+  console.log(process.hrtime(start));
+}
 
-const search = root.search(30);
-if (search) console.log(search.toString());
+run(1000);
+run(10000);
+run(100000);
+run(1000000);
+run(10000000);
+run(100000000);
