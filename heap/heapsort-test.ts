@@ -1,13 +1,12 @@
 import { heapsort } from "./heapsort";
 import { randomArray } from "../utility/random";
+import { test } from "../utility/test";
 
 function run(size: number) {
   const arr = randomArray(size, Number.MAX_SAFE_INTEGER);
   const start = process.hrtime();
   heapsort(arr);
-  console.log(process.hrtime(start));
+  return process.hrtime(start)[1];
 }
 
-run(1000000);
-run(10000000);
-run(100000000);
+test([10000, 100000, 1000000], run);
