@@ -1,16 +1,15 @@
-import { randomArray, randomNumber } from "../utility/random";
+import { randomNumber } from "../utility/random";
 import { BinarySearchTree } from "./binary-search-tree";
 import { test } from "../utility/test";
 
-function treeSearchTest(size: number) {
+function treeSearchTest(arr: number[], size: number) {
   const root = new BinarySearchTree(randomNumber(Number.MAX_SAFE_INTEGER));
-  const arr = randomArray(size, Number.MAX_SAFE_INTEGER);
 
-  arr.forEach(e => {
-    root.insert(new BinarySearchTree(e));
-  });
+  for (var i = 0; i < size; i++) {
+    root.insert(new BinarySearchTree(arr[i]));
+  }
 
-  const randomElement = arr[Math.floor(Math.random() * arr.length)];
+  const randomElement = arr[Math.floor(Math.random() * size)];
 
   const start = process.hrtime();
   root.search(randomElement);

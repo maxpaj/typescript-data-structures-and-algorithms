@@ -1,3 +1,7 @@
+/**
+ * MinHeap implemented using an array
+ */
+
 export class MinHeap {
   heap: number[];
 
