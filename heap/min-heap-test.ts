@@ -1,6 +1,6 @@
 import { MinHeap } from "./min-heap";
 
-const heap = new MinHeap();
+const heap = new MinHeap<number>();
 heap.insert(3);
 heap.insert(1);
 heap.insert(-1);

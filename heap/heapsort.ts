@@ -1,7 +1,7 @@
 import { MinHeap } from "./min-heap";
 
 export function heapsort(arr: number[]) {
-  const heap = new MinHeap();
+  const heap = new MinHeap<number>();
 
   // Build the heap
   arr.forEach(el => {

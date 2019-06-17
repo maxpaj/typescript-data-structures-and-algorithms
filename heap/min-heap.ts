@@ -2,8 +2,8 @@
  * MinHeap implemented using an array
  */
 
-export class MinHeap {
-  heap: number[];
+export class MinHeap<T> {
+  heap: T[];
 
   constructor() {
     this.heap = [];
@@ -13,7 +13,7 @@ export class MinHeap {
     return this.heap.length === 0;
   }
 
-  public insert(element: number) {
+  public insert(element: T) {
     // Add element last
     this.heap.push(element);
 
@@ -24,7 +24,7 @@ export class MinHeap {
     this.bubble_up(currentIndex);
   }
 
-  public extract(): number {
+  public extract() {
     // Store head
     const head = this.heap[0];
 

@@ -1,13 +1,13 @@
-export class BinarySearchTree {
-  leftChild: BinarySearchTree = null;
-  rightChild: BinarySearchTree = null;
-  data: number;
+export class BinarySearchTree<T> {
+  leftChild: BinarySearchTree<T> = null;
+  rightChild: BinarySearchTree<T> = null;
+  data: T;
 
-  constructor(data: number) {
+  constructor(data: T) {
     this.data = data;
   }
 
-  insert(node: BinarySearchTree) {
+  insert(node: BinarySearchTree<T>) {
     if (node.data < this.data) {
       if (this.leftChild === null) {
         this.leftChild = node;
@@ -23,7 +23,7 @@ export class BinarySearchTree {
     }
   }
 
-  search(data: number) {
+  search(data: T) {
     if (this.data === data) {
       return this;
     }
