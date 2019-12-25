@@ -15,6 +15,6 @@ describe("HeapSort", () => {
     ];
 
     const sorted = Heapsort.sort(unsorted);
-    expect(sorted[0]).to.equal(-4);
+    expect(sorted[0].number).to.equal(-4);
   });
 });
