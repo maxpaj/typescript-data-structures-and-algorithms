@@ -1,4 +1,6 @@
-export class BinarySearchTree<T> {
+import { Comparable } from "../utility/comparable";
+
+export class BinarySearchTree<T extends Comparable<T>> {
   leftChild: BinarySearchTree<T> = null;
   rightChild: BinarySearchTree<T> = null;
   data: T;
@@ -8,7 +10,7 @@ export class BinarySearchTree<T> {
   }
 
   insert(node: BinarySearchTree<T>) {
-    if (node.data < this.data) {
+    if (node.data.lesserThan(this.data)) {
       if (this.leftChild === null) {
         this.leftChild = node;
       } else {
@@ -24,13 +26,13 @@ export class BinarySearchTree<T> {
   }
 
   search(data: T) {
-    if (this.data === data) {
+    if (this.data.equals(data)) {
       return this;
     }
 
-    if (this.data > data && this.leftChild) {
+    if (this.data.greaterThan(data) && this.leftChild) {
       return this.leftChild.search(data);
-    } else if (this.data < data && this.rightChild) {
+    } else if (this.data.lesserThan(data) && this.rightChild) {
       return this.rightChild.search(data);
     }
     return null;

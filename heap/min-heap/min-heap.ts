@@ -1,8 +1,6 @@
-/**
- * MinHeap implemented using an array
- */
+import { Comparable } from "../../utility/comparable";
 
-export class MinHeap<T> {
+export class MinHeap<T extends Comparable<T>> {
   heap: T[];
 
   constructor() {
@@ -21,7 +19,11 @@ export class MinHeap<T> {
     let currentIndex = this.heap.length - 1;
 
     // Bubble up the element
-    this.bubble_up(currentIndex);
+    this.bubbleUp(currentIndex);
+  }
+
+  public size() {
+    return this.heap.length;
   }
 
   public extract() {
@@ -40,55 +42,55 @@ export class MinHeap<T> {
     this.heap[0] = last;
 
     // Bubble down the element
-    this.bubble_down(0);
+    this.bubbleDown(0);
 
     return head;
   }
 
-  public toString(): string {
-    return this.heap.join(", ");
-  }
-
-  private bubble_up(currentIndex: number) {
+  private bubbleUp(currentIndex: number) {
     const element = this.heap[currentIndex];
 
     // Find the parent
     let parentIndex = Math.floor((currentIndex - 1) / 2);
 
     // If parent is bigger than element, swap them
-    if (this.heap[parentIndex] > element) {
+    if (this.heap[parentIndex].greaterThan(element)) {
       const tmp = this.heap[parentIndex];
       this.heap[parentIndex] = element;
       this.heap[currentIndex] = tmp;
 
-      this.bubble_up(parentIndex);
+      this.bubbleUp(parentIndex);
     }
   }
 
-  private bubble_down(currentIndex: number) {
+  private bubbleDown(currentIndex: number) {
     // Find children index
     const leftIndex = currentIndex * 2 + 1;
     const rightIndex = currentIndex * 2 + 2;
 
     let minIndex = currentIndex;
 
-    // Check if they are in the right place compared to the parent
-    if (this.heap.length > leftIndex && this.heap[leftIndex] < this.heap[minIndex]) {
+    // Check if children are in the right place compared to the parent
+    if (this.heap.length > leftIndex && this.heap[leftIndex].lesserThan(this.heap[minIndex])) {
       minIndex = leftIndex;
     }
 
-    if (this.heap.length > rightIndex && this.heap[rightIndex] < this.heap[minIndex]) {
+    if (this.heap.length > rightIndex && this.heap[rightIndex].lesserThan(this.heap[minIndex])) {
       minIndex = rightIndex;
     }
 
-    // If we found a child with a smaller value, swap and recurse
+    // If found a child with a smaller value, swap and recurse
     if (minIndex != currentIndex) {
       const tmp = this.heap[minIndex];
       this.heap[minIndex] = this.heap[currentIndex];
       this.heap[currentIndex] = tmp;
       currentIndex = minIndex;
 
-      this.bubble_down(minIndex);
+      this.bubbleDown(minIndex);
     }
+  }
+
+  public toString(): string {
+    return this.heap.join(", ");
   }
 }
