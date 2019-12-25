@@ -54,7 +54,7 @@ export class MinHeap<T extends Comparable<T>> {
     let parentIndex = Math.floor((currentIndex - 1) / 2);
 
     // If parent is bigger than element, swap them
-    if (this.heap[parentIndex].greaterThan(element)) {
+    if (parentIndex > -1 && this.heap[parentIndex].greaterThan(element)) {
       const tmp = this.heap[parentIndex];
       this.heap[parentIndex] = element;
       this.heap[currentIndex] = tmp;
