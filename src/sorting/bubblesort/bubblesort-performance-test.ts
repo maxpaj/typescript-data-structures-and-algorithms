@@ -8,4 +8,9 @@ function test(arr: ComparableNumber[]) {
   return process.hrtime(start);
 }
 
-testArray([1000, 10000, 100000], test);
+testArray([
+  10000,
+  20000,
+  40000,
+  80000
+], test);
