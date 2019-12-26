@@ -18,6 +18,3 @@ Removes the root node, then replaces the root with the last node of the tree, th
 
 O(log n) - The node will travel down at most the number of levels in the tree
 
-## Algorithms
-
-### Heapsort
