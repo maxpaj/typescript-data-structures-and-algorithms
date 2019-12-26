@@ -1,10 +1,10 @@
 import { testArray } from "../../utility/performance";
 import { ComparableNumber } from "../../utility/comparable";
-import { heapSort } from "./heapsort";
+import { mergeSort } from "./mergesort";
 
-function heapsortTest(arr: ComparableNumber[]) {
+function test(arr: ComparableNumber[]) {
   const start = process.hrtime();
-  heapSort(arr);
+  mergeSort(arr);
   return process.hrtime(start);
 }
 
@@ -13,4 +13,4 @@ testArray([
   100000, 
   1000000,
   10000000
-], heapsortTest);
+], test);
