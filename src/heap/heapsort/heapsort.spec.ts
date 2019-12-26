@@ -1,6 +1,6 @@
 import { ComparableNumber } from "../../utility/comparable";
-import { Heapsort } from "./heapsort";
 import { expect } from "chai";
+import { sort } from "./heapsort";
 
 describe("HeapSort", () => {
   it("should sort an array correctly", () => {
@@ -14,7 +14,13 @@ describe("HeapSort", () => {
       new ComparableNumber(9)
     ];
 
-    const sorted = Heapsort.sort(unsorted);
+    const sorted = sort(unsorted);
+    
     expect(sorted[0].number).to.equal(-4);
+    expect(sorted[sorted.length - 1].number).to.equal(10);
+
+    for (let i = 0; i < sorted.length - 1; i++) {
+      expect(sorted[i].number <= sorted[i + 1].number).to.equal(true);
+    }
   });
 });

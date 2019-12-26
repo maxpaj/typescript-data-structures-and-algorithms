@@ -1,23 +1,20 @@
 import { MinHeap } from "../min-heap/min-heap";
 import { Comparable } from "../../utility/comparable";
 
-export class Heapsort {
-  static sort<T extends Comparable<T>>(arr: T[]) {
-    const heap = new MinHeap<T>();
-  
-    // Build the heap
-    arr.forEach(el => {
-      heap.insert(el);
-    });
-  
-    const sorted = Array<T>();
-  
-    // Extract the values from the top until the heap is empty
-    while (!heap.isEmpty()) {
-      sorted.push(heap.extract());
-    }
-  
-    return sorted;
+export function sort<T extends Comparable<T>>(arr: T[]) {
+  const heap = new MinHeap<T>();
+
+  // Build the heap
+  arr.forEach(el => {
+    heap.insert(el);
+  });
+
+  const sorted = Array<T>();
+
+  // Extract the values from the top until the heap is empty
+  while (!heap.isEmpty()) {
+    sorted.push(heap.extract());
   }
-  
+
+  return sorted;
 }
