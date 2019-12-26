@@ -1,7 +1,7 @@
 import { MinHeap } from "../min-heap/min-heap";
 import { Comparable } from "../../utility/comparable";
 
-export function sort<T extends Comparable<T>>(arr: T[]) {
+export function heapSort<T extends Comparable<T>>(arr: T[]) {
   const heap = new MinHeap<T>();
 
   // Build the heap
