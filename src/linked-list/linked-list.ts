@@ -24,6 +24,16 @@ export class LinkedList<T> {
     return current;
   }
 
+  size() {
+    let size = 1;
+    let head = this.head;
+    while (head.next) {
+      size++;
+      head = head.next;
+    }
+    return size;
+  }
+
   remove(index?: number) {
     // Handle removing the first element
     if (index === 0) {
