@@ -37,9 +37,17 @@ I'll roughly follow the course plan of the course Algorithms, Data Structures an
 
 # Tests
 
-To run tests, use
+## Unit tests
 
-`node -r ts-node/register --max-old-space-size=8192 --expose-gc heap/heapsort-test.ts`
+`npm run test`
+
+## Performance tests
+
+`node -r ts-node/register <performance-test-file-path>`
+
+or 
+
+`ts-node <performance-test-file-path>`
 
 [Node CLI docs](https://nodejs.org/api/cli.html)
 
