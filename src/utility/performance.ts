@@ -1,6 +1,6 @@
 import { ComparableNumber } from "./comparable";
 
-const ITERATIONS = 5;
+const ITERATIONS = 10;
 
 function run(arr: ComparableNumber[], f: (arr: ComparableNumber[]) => [number, number]) {
   const time = f(arr);
@@ -35,7 +35,7 @@ export function testArray(sizes: number[], testFunction: (arr: ComparableNumber[
     }
 
     const average = result / ITERATIONS;
-    runs.push({ size, average: average, change: i !== 0 ? average / runs[i - 1].average : 0 });
+    runs.push({ size, average: average, change: i !== 0 ? average / runs[0].average : 0 });
   }
 
   console.table(runs);

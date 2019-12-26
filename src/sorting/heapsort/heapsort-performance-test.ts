@@ -9,9 +9,10 @@ function test(arr: ComparableNumber[]) {
 }
 
 testArray([
-  10000,
-  20000,
-  40000,
   80000,
-  100000
+  160000,
+  320000,
+  640000,
+  1280000,
+  2560000
 ], test);
