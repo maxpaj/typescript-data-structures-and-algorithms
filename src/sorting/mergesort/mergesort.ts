@@ -1,37 +1,29 @@
 import { Comparable } from "../../utility/comparable";
 
 export function mergeSort<T extends Comparable<T>>(arr: T[]) {
-  return split(arr);
-}
-
-function split<T extends Comparable<T>>(arr: T[]) {
-  if (arr.length < 2) {
+  if (arr.length <= 1) {
     return arr;
   }
 
-  let a1 = arr,
-    a2 = [];
+  const index = Math.floor(arr.length / 2);
+  const a1 = mergeSort(arr.slice(0, index));
+  const a2 = mergeSort(arr.slice(index, arr.length));
 
-  let index = Math.floor(arr.length / 2);
-  a1 = split(arr.slice(0, index));
-  a2 = split(arr.slice(index, arr.length));
-  let merged = merge(a1, a2);
-
-  return merged;
+  return merge(a1, a2);
 }
 
-function merge<T extends Comparable<T>>(a1: T[], a2: T[]) {
-  let arr = [];
-  while (a1.length > 0 && a2.length > 0) {
-    if (a1[0].greaterThan(a2[0])) {
-      arr = arr.concat(a2.splice(0, 1));
+function merge<T extends Comparable<T>>(right: T[], left: T[]) {
+  const sorted = [];
+  let rightIndex = 0,
+    leftIndex = 0;
+
+  while (rightIndex < right.length && leftIndex < left.length) {
+    if (right[rightIndex].greaterThan(left[leftIndex])) {
+      sorted.push(left[leftIndex++]);
     } else {
-      arr = arr.concat(a1.splice(0, 1));
+      sorted.push(right[rightIndex++]);
     }
   }
 
-  if (a1.length === 0) {
-    return arr.concat(a2);
-  }
-  return arr.concat(a1);
+  return sorted.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
