@@ -16,14 +16,6 @@ export class LinkedList<T> {
     return this.head.data;
   }
 
-  private last() {
-    let current = this.head;
-    while (current.next !== undefined) {
-      current = current.next;
-    }
-    return current;
-  }
-
   size() {
     let size = 1;
     let head = this.head;
@@ -34,21 +26,29 @@ export class LinkedList<T> {
     return size;
   }
 
-  remove(index?: number) {
+  get(index: number = 0) {
+    return this.findNodeByIndex(this.head, index).data;
+  }
+
+  remove(index: number = 0) {
     // Handle removing the first element
     if (index === 0) {
-      const temp = this.head;
+      const v = this.head.data;
       this.head = this.head.next;
-      return temp.data;
+      return v;
     }
 
     // Find the element in the list which is previous to the element which is going to be removed
     const current = this.findNodeByIndex(this.head, index - 1);
 
     // Remove the element
-    const temp = current.next;
+    if (!current.next) {
+      throw "Index out of bounds";
+    }
+    
+    const value = current.next.data;
     current.next = current.next ? current.next.next : undefined;
-    return temp.data;
+    return value;
   }
 
   add(value: T, index: number = -1) {
@@ -72,6 +72,14 @@ export class LinkedList<T> {
     const tmp = current.next;
     current.next = newNode;
     newNode.next = tmp;
+  }
+  
+  private last() {
+    let current = this.head;
+    while (current.next !== undefined) {
+      current = current.next;
+    }
+    return current;
   }
 
   private findNodeByIndex(head: Node<T>, index: number) {

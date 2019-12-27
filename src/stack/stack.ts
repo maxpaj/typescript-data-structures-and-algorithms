@@ -1,6 +1,6 @@
 import { LinkedList } from "../linked-list/linked-list";
 
-export class Queue<T> {
+export class Stack<T> {
   private list: LinkedList<T>;
 
   constructor() {
@@ -16,14 +16,14 @@ export class Queue<T> {
   }
 
   peek() {
-    return this.list.peek();
+    return this.list.get(this.list.size() - 1);
   }
 
-  enqueue(value: T) {
+  pop() {
+    return this.list.remove(this.list.size() - 1);
+  }
+
+  push(value: T) {
     this.list.add(value);
-  }
-
-  dequeue() {
-    return this.list.remove(0);
   }
 }
