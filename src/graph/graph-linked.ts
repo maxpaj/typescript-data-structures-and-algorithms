@@ -24,17 +24,17 @@ class Edge<T> {
     }
 }
 
-export class Graph<T> {
-    private vertices: Vertex<T>[];
-    private edges: Edge<T>[];
+export class Graph<V, E> {
+    private vertices: Vertex<V>[];
+    private edges: Edge<E>[];
 
-    constructor(vertices: Vertex<T>[], edges: Edge<T>[]) {
+    constructor(vertices: Vertex<V>[], edges: Edge<E>[]) {
         this.vertices = vertices;
         this.edges = edges;
     }
 
     isReachable(): void {
-        const queue = new Queue<Vertex<T>>();
+        const queue = new Queue<Vertex<V>>();
         queue.enqueue(this.vertices[0]);
     }
 }
