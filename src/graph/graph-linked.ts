@@ -33,7 +33,7 @@ export class Graph<T> {
         this.edges = edges;
     }
 
-    depthFirst(): void {
+    isReachable(): void {
         const queue = new Queue<Vertex<T>>();
         queue.enqueue(this.vertices[0]);
     }
