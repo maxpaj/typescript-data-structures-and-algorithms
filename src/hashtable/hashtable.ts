@@ -3,14 +3,14 @@ export interface Key<K> {
     hashCode(): number;
 }
 
-export class HashTable<K extends Key<K>, T> {
-    private buckets: { key: K, value: T }[][];
+export class HashTable<K extends Key<K>, V> {
+    private buckets: { key: K, value: V }[][];
 
     constructor(size: number) {
         this.buckets = new Array(size).fill([]);
     }
 
-    set(key: K, value: T) {
+    set(key: K, value: V) {
         const bucket = this.getBucket(key);
         const foundIndex = bucket.findIndex(entry => entry.key.equals(key));
 

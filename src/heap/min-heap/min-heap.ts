@@ -7,11 +7,11 @@ export class MinHeap<T extends Comparable<T>> {
     this.heap = [];
   }
 
-  public isEmpty() {
+  isEmpty() {
     return this.heap.length === 0;
   }
 
-  public insert(element: T) {
+  insert(element: T) {
     // Add element last
     this.heap.push(element);
 
@@ -19,11 +19,11 @@ export class MinHeap<T extends Comparable<T>> {
     this.bubbleUp(this.heap.length - 1);
   }
 
-  public size() {
+  size() {
     return this.heap.length;
   }
 
-  public extract() {
+  extract() {
     // Store head
     const head = this.heap[0];
 
@@ -87,7 +87,7 @@ export class MinHeap<T extends Comparable<T>> {
     }
   }
 
-  public toString(): string {
+  toString(): string {
     return this.heap.join(", ");
   }
 }
