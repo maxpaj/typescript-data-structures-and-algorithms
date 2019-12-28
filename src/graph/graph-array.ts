@@ -24,7 +24,7 @@ export class Graph<V> {
         this.adjacencyMatrix[v2][v1] = edge;
     }
 
-    // 
+    // Breadth first search
     isReachable(v1: number, v2: number): boolean {
         const neighbours = new Queue<number>();
         const visited = new HashTable<KeyNumber, boolean>(this.adjacencyMatrix.length);

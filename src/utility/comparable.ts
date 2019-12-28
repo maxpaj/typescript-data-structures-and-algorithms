@@ -17,6 +17,10 @@ export class ComparableNumber implements Comparable<ComparableNumber> {
         return this.number < value.number;
     }
 
+    lesserThanOrEqual(value: ComparableNumber): boolean {
+        return this.lesserThan(value) || this.equals(value);
+    }
+
     static random(max?: number): ComparableNumber {
         return new ComparableNumber(
             Math.round(Math.random() * max || Number.MAX_SAFE_INTEGER)
@@ -29,4 +33,5 @@ export interface Comparable<T> {
     greaterThan(value: T): boolean;
     equals(value: T): boolean;
     lesserThan(value: T): boolean;
+    lesserThanOrEqual(value: T): boolean;
 }
