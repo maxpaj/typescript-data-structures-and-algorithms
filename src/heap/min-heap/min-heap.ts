@@ -15,11 +15,8 @@ export class MinHeap<T extends Comparable<T>> {
     // Add element last
     this.heap.push(element);
 
-    // Grab the index
-    let currentIndex = this.heap.length - 1;
-
     // Bubble up the element
-    this.bubbleUp(currentIndex);
+    this.bubbleUp(this.heap.length - 1);
   }
 
   public size() {
