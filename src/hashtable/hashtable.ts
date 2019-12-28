@@ -36,7 +36,7 @@ export class HashTable<K extends Key<K>, V> {
     get(key: K): V {
         const bucket = this.getBucket(key);
         const found = bucket.find(entry => entry.key.equals(key));
-        if (found === null) {
+        if (!found) {
             return null;
         }
         return found.value;

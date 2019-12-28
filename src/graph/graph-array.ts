@@ -1,6 +1,6 @@
-import { Queue } from "queue/queue";
-import { HashTable } from "hashtable/hashtable";
-import { KeyNumber } from "utility/keys";
+import { Queue } from "../queue/queue";
+import { HashTable } from "../hashtable/hashtable";
+import { KeyNumber } from "../utility/keys";
 
 export class Graph {
     private matrix: number[][];
@@ -9,8 +9,9 @@ export class Graph {
         this.matrix = new Array(numberOfVertices).fill(new Array(numberOfVertices).fill(-1));
     }
 
-    addEdge(v1: number, v2: number, weight = 0): void {
-        this.matrix[v1][v2] = weight;
+    addEdge(v1: number, v2: number, edge = 0): void {
+        this.matrix[v1][v2] = edge;
+        this.matrix[v2][v1] = edge;
     }
 
     isReachable(v1: number, v2: number): boolean {
@@ -21,6 +22,7 @@ export class Graph {
         while (!neighbours.isEmpty()) {
             const vertex = neighbours.dequeue();
 
+            // If found, return
             if (vertex === v2) {
                 return true;
             }
@@ -28,9 +30,9 @@ export class Graph {
             // Mark node as visited
             visited.set(new KeyNumber(vertex), true);
 
-            // Add all neighbours
-            this.matrix[vertex].forEach(v => {
-                if (!visited.get(new KeyNumber(v))) {
+            // Add all neighbour vertices
+            this.matrix[vertex].forEach((e, v) => {
+                if (e !== -1 && !visited.get(new KeyNumber(v))) {
                     neighbours.enqueue(v);
                 }
             });

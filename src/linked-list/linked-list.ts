@@ -15,6 +15,8 @@ export class LinkedList<T> {
     }
 
     size(): number {
+        if (!this.head) { return 0; }
+
         let size = 1;
         let head = this.head;
         while (head.next) {
