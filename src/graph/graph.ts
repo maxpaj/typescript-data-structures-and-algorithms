@@ -1,39 +1,40 @@
 import { Queue } from "../queue/queue";
 
 class Vertex<T> {
-  private weight: T;
+    private weight: T;
 
-  constructor(weight: T) {
-    this.weight = weight;
-  }
+    constructor(weight: T) {
+        this.weight = weight;
+    }
 
-  getWeight() {
-    return this.weight;
-  }
+    getWeight(): T {
+        return this.weight;
+    }
 }
 
 class Edge<T> {
-  private weight: T;
+    private weight: T;
 
-  constructor(weight: T) {
-    this.weight = weight;
-  }
+    constructor(weight: T) {
+        this.weight = weight;
+    }
 
-  getWeight() {
-    return this.weight;
-  }
+    getWeight(): T {
+        return this.weight;
+    }
 }
 
 export class Graph<T> {
-  private vertices: Vertex<T>[];
-  private edges: Edge<T>[];
+    private vertices: Vertex<T>[];
+    private edges: Edge<T>[];
 
-  constructor(vertices: Vertex<T>[], edges: Edge<T>[]) {
-    this.vertices = vertices;
-    this.edges = edges;
-  }
+    constructor(vertices: Vertex<T>[], edges: Edge<T>[]) {
+        this.vertices = vertices;
+        this.edges = edges;
+    }
 
-  depthFirst() {
-    const queue = new Queue<T>();
-  }
+    depthFirst(): void {
+        const queue = new Queue<Vertex<T>>();
+        queue.enqueue(this.vertices[0]);
+    }
 }
