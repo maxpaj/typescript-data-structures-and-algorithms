@@ -18,7 +18,7 @@ export class BinarySearchTree<K extends Comparable<K>, V> {
       } else {
         this.leftChild.insert(key, value);
       }
-    } else if(key.greaterThan(this.key)) {
+    } else if (key.greaterThan(this.key)) {
       if (this.rightChild === null) {
         this.rightChild = new BinarySearchTree<K, V>(key, value);
       } else {
@@ -65,7 +65,7 @@ export class BinarySearchTree<K extends Comparable<K>, V> {
       this.rightChild.inorder(f);
     }
   }
-  
+
   toString() {
     return "" + this.key;
   }
