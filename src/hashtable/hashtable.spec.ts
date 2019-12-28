@@ -1,6 +1,6 @@
 import { HashTable } from "./hashtable";
 import { expect } from "chai";
-import { KeyString } from "../utility/key-string";
+import { KeyString } from "../utility/keys";
 
 describe("HashTable", () => {
     describe("get", () => {

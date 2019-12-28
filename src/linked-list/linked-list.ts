@@ -72,12 +72,12 @@ export class LinkedList<T> {
         newNode.next = tmp;
     }
 
-    private last(): T {
+    private last(): Node<T> {
         let current = this.head;
         while (current.next !== undefined) {
             current = current.next;
         }
-        return current.data;
+        return current;
     }
 
     private findNodeByIndex(head: Node<T>, index: number): Node<T> {

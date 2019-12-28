@@ -44,7 +44,11 @@ export class HashTable<K extends Key<K>, V> {
 
     private getBucket(key: K): { key: K, value: V }[] {
         const index = this.hashKey(key);
-        return this.buckets[index];
+        const bucket = this.buckets[index];
+        if (!bucket) {
+            throw "Key not populated";
+        }
+        return bucket;
     }
 
     private hashKey(key: K): number {
