@@ -1,3 +1,5 @@
+import { createSecureContext } from "tls";
+
 class Node<T> {
     data: T;
     next: Node<T>;
@@ -7,7 +9,7 @@ class Node<T> {
     }
 }
 
-export class LinkedList<T> {
+export class LinkedList<T> implements Iterable<T> {
     private head: Node<T>;
 
     peek(): T {
@@ -72,6 +74,20 @@ export class LinkedList<T> {
         const tmp = current.next;
         current.next = newNode;
         newNode.next = tmp;
+    }
+
+    [Symbol.iterator](): Iterator<T> {
+        let current = this.head;
+        return {
+            next(): IteratorResult<T, boolean> {
+                if (current) {
+                    const data = current.data;
+                    current = current.next;
+                    return { value: data, done: false };
+                }
+                return { value: null, done: true };
+            }
+        }
     }
 
     private last(): Node<T> {

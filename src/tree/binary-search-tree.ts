@@ -1,4 +1,5 @@
 import { Comparable } from "../utility/comparable";
+import { Stack } from "stack/stack";
 
 export class BinarySearchTree<K extends Comparable<K>, V> {
     private leftChild: BinarySearchTree<K, V> = null;
@@ -68,5 +69,27 @@ export class BinarySearchTree<K extends Comparable<K>, V> {
 
     toString(): string {
         return "" + this.key;
+    }
+    
+    [Symbol.iterator](): Iterator<V> {
+        const stack = new Stack<BinarySearchTree<K, V>>();
+        let current = this as BinarySearchTree<K, V>;
+
+        return {
+            next(): IteratorResult<V, boolean> {
+                while (current != null) {
+                    stack.push(current);
+                    current = current.leftChild;
+                }
+
+                if (!stack.isEmpty()) {
+                    const next = stack.pop();
+                    current = next.rightChild;
+                    return { value: next.value, done: false };
+                }
+                
+                return { value: null, done: true };
+            }
+        }
     }
 }

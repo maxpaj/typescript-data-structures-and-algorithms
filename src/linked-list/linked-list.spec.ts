@@ -57,4 +57,24 @@ describe("LinkedList", () => {
             expect(list.size()).to.equal(6);
         });
     });
+
+    describe("iterator", () => {
+        it("should iterate the list in correct order", () => {
+            const list = new LinkedList<number>();
+
+            [9, 10, 2, 3, -1, 5].forEach(n => {
+                list.add(n);
+            });
+
+            const result = [];
+            for (const e of list) {
+                result.push(e);
+            }
+
+            expect(result[0]).to.equal(9);
+            expect(result[1]).to.equal(10);
+            expect(result[2]).to.equal(2);
+            expect(result[3]).to.equal(3);
+        });
+    })
 });

@@ -57,4 +57,26 @@ describe("BinarySearchTree", () => {
             expect(order[3]).to.equal("GHI");
         });
     });
+
+    describe("iterator", () => {
+        it("should iterate in-order", () => {
+            const bst = new BinarySearchTree<ComparableNumber, string>(
+                new ComparableNumber(0),
+                "ABC"
+            );
+            bst.insert(new ComparableNumber(1), "DEF");
+            bst.insert(new ComparableNumber(3), "GHI");
+            bst.insert(new ComparableNumber(-2), "JKL");
+    
+            const result = [];
+            for (const e of bst) {
+                result.push(e);
+            }
+    
+            expect(result[0]).to.equal("JKL");
+            expect(result[1]).to.equal("ABC");
+            expect(result[2]).to.equal("DEF");
+            expect(result[3]).to.equal("GHI");
+        });
+    });
 });
