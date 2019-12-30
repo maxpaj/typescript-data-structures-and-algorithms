@@ -40,7 +40,8 @@ describe("quicksort", () => {
     ];
 
     arrays.forEach(arr => {
-        xit("should sort an array correctly", () => {
+        it("should sort an array correctly", () => {
+            quicksort(arr);
             for (let i = 0; i < arr.length - 1; i++) {
                 expect(arr[i].number).to.be.lte(arr[i + 1].number);
             }

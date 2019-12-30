@@ -1,10 +1,10 @@
 import { Comparable } from "utility/comparable";
 import { arraySwap } from "../../utility/swap";
 
-function partition<T extends Comparable<T>>(arr: T[], lo: number, hi: number): number {
+export function partition<T extends Comparable<T>>(arr: T[], lo: number, hi: number): number {
     const pivot = arr[hi];
 
-    let index = 0;
+    let index = lo;
 
     for (let j = lo; j <= hi; j++) {
         if (arr[j].lesserThan(pivot)) {
