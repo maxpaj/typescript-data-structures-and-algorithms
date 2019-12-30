@@ -1,8 +1,8 @@
 import { ComparableNumber } from "../../utility/comparable";
 import { expect } from "chai";
-import { bubbleSort } from "./bubblesort";
+import { bubblebort } from "./bubblesort";
 
-describe("bubbleSort", () => {
+describe("bubblebort", () => {
     const arrays = [
         [new ComparableNumber(1)],
         [new ComparableNumber(1), new ComparableNumber(1)],
@@ -41,7 +41,7 @@ describe("bubbleSort", () => {
 
     arrays.forEach(unsorted => {
         it("should sort an array correctly", () => {
-            const sorted = bubbleSort(unsorted);
+            const sorted = bubblebort(unsorted);
 
             expect(sorted.length).to.equal(unsorted.length);
 

@@ -1,8 +1,8 @@
 import { ComparableNumber } from "../../utility/comparable";
 import { expect } from "chai";
-import { mergeSort } from "./mergesort";
+import { mergesort } from "./mergesort";
 
-describe("mergeSort", () => {
+describe("mergesort", () => {
     const arrays = [
         [new ComparableNumber(1)],
         [new ComparableNumber(1), new ComparableNumber(1)],
@@ -39,11 +39,11 @@ describe("mergeSort", () => {
         ]
     ];
 
-    arrays.forEach(unsorted => {
+    arrays.forEach(arr => {
         it("should sort an array correctly", () => {
-            const sorted = mergeSort(unsorted);
+            const sorted = mergesort(arr);
 
-            expect(sorted.length).to.equal(unsorted.length);
+            expect(sorted.length).to.equal(arr.length);
 
             for (let i = 0; i < sorted.length - 1; i++) {
                 expect(sorted[i].number).to.be.lte(sorted[i + 1].number);

@@ -1,5 +1,5 @@
 import { Comparable } from "utility/comparable";
-import { swap } from "../../utility/swap";
+import { arraySwap } from "../../utility/swap";
 
 function partition<T extends Comparable<T>>(arr: T[], lo: number, hi: number): number {
     const pivot = arr[hi];
@@ -8,20 +8,19 @@ function partition<T extends Comparable<T>>(arr: T[], lo: number, hi: number): n
 
     for (let j = lo; j <= hi; j++) {
         if (arr[j].lesserThan(pivot)) {
-            swap(arr, index++, j);
+            arraySwap(arr, index++, j);
         }
     }
 
-    swap(arr, index, hi);
+    arraySwap(arr, index, hi);
 
     return index;
 }
 
-export function quickSort<T extends Comparable<T>>(arr: T[], lo = 0, hi = arr.length - 1): T[] {
+export function quicksort<T extends Comparable<T>>(arr: T[], lo = 0, hi = arr.length - 1): void {
     if (lo < hi) {
         const p = partition(arr, lo, hi);
-        quickSort(arr, lo, p - 1);
-        quickSort(arr, p + 1, hi);
+        quicksort(arr, lo, p - 1);
+        quicksort(arr, p + 1, hi);
     }
-    return arr;
 }

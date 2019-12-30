@@ -1,10 +1,10 @@
 import { testArray } from "../../utility/performance";
 import { ComparableNumber } from "../../utility/comparable";
-import { mergeSort } from "./mergesort";
+import { mergesort } from "./mergesort";
 
 function test(arr: ComparableNumber[]): [number, number] {
     const start = process.hrtime();
-    mergeSort(arr);
+    mergesort(arr);
     return process.hrtime(start);
 }
 

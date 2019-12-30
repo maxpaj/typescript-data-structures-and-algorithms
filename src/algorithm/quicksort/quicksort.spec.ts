@@ -1,8 +1,8 @@
 import { ComparableNumber } from "../../utility/comparable";
 import { expect } from "chai";
-import { quickSort } from "./quicksort";
+import { quicksort } from "./quicksort";
 
-describe("quickSort", () => {
+describe("quicksort", () => {
     const arrays = [
         [new ComparableNumber(1)],
         [new ComparableNumber(1), new ComparableNumber(1)],
@@ -39,14 +39,10 @@ describe("quickSort", () => {
         ]
     ];
 
-    arrays.forEach(unsorted => {
+    arrays.forEach(arr => {
         xit("should sort an array correctly", () => {
-            const sorted = quickSort(unsorted);
-
-            expect(sorted.length).to.equal(unsorted.length);
-
-            for (let i = 0; i < sorted.length - 1; i++) {
-                expect(sorted[i].number).to.be.lte(sorted[i + 1].number);
+            for (let i = 0; i < arr.length - 1; i++) {
+                expect(arr[i].number).to.be.lte(arr[i + 1].number);
             }
         });
     });

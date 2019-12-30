@@ -16,14 +16,14 @@ function merge<T extends Comparable<T>>(right: T[], left: T[]): T[] {
   return sorted.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
 
-export function mergeSort<T extends Comparable<T>>(arr: T[]): T[] {
+export function mergesort<T extends Comparable<T>>(arr: T[]): T[] {
     if (arr.length <= 1) {
         return arr;
     }
 
     const index = Math.floor(arr.length / 2);
-    const a1 = mergeSort(arr.slice(0, index));
-    const a2 = mergeSort(arr.slice(index, arr.length));
+    const a1 = mergesort(arr.slice(0, index));
+    const a2 = mergesort(arr.slice(index, arr.length));
 
     return merge(a1, a2);
 }
