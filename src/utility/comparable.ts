@@ -1,4 +1,4 @@
-export class ComparableNumber implements Comparable<ComparableNumber> {
+export class ComparableNumber implements IComparable<ComparableNumber> {
     constructor(public number: number) {}
 
     compareTo(value: ComparableNumber): number {
@@ -28,7 +28,7 @@ export class ComparableNumber implements Comparable<ComparableNumber> {
     }
 }
 
-export interface Comparable<T> {
+export interface IComparable<T> {
     compareTo(value: T): number;
     greaterThan(value: T): boolean;
     equals(value: T): boolean;

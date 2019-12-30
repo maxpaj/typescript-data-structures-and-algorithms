@@ -1,7 +1,11 @@
-import { Comparable } from "utility/comparable";
+import { IComparable } from "../../utility/comparable";
 import { arraySwap } from "../../utility/swap";
 
-export function partition<T extends Comparable<T>>(arr: T[], lo: number, hi: number): number {
+export function partition<T extends IComparable<T>>(
+    arr: T[],
+    lo: number,
+    hi: number
+): number {
     const pivot = arr[hi];
 
     let index = lo;
@@ -17,7 +21,11 @@ export function partition<T extends Comparable<T>>(arr: T[], lo: number, hi: num
     return index;
 }
 
-export function quicksort<T extends Comparable<T>>(arr: T[], lo = 0, hi = arr.length - 1): void {
+export function quicksort<T extends IComparable<T>>(
+    arr: T[],
+    lo = 0,
+    hi = arr.length - 1
+): void {
     if (lo < hi) {
         const p = partition(arr, lo, hi);
         quicksort(arr, lo, p - 1);

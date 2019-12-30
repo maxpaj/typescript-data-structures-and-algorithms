@@ -1,9 +1,9 @@
-export interface Key<K> {
+export interface IKey<K> {
     equals(k: K): boolean;
     hashCode(): number;
 }
 
-export class HashTable<K extends Key<K>, V> {
+export class HashTable<K extends IKey<K>, V> {
     private buckets: { key: K; value: V }[][];
 
     constructor(size: number) {

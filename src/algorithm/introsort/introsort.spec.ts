@@ -39,14 +39,12 @@ describe("introsort", () => {
         ]
     ];
 
-    arrays.forEach(unsorted => {
-        xit("should sort an array correctly", () => {
-            const sorted = introsort(unsorted);
+    arrays.forEach(arr => {
+        it("should sort an array correctly", () => {
+            introsort(arr);
 
-            expect(sorted.length).to.equal(unsorted.length);
-
-            for (let i = 0; i < sorted.length - 1; i++) {
-                expect(sorted[i].number).to.be.lte(sorted[i + 1].number);
+            for (let i = 0; i < arr.length - 1; i++) {
+                expect(arr[i].number).to.be.lte(arr[i + 1].number);
             }
         });
     });

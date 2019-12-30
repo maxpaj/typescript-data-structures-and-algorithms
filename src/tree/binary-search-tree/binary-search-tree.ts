@@ -1,7 +1,7 @@
-import { Comparable } from "../../utility/comparable";
+import { IComparable } from "../../utility/comparable";
 import { Stack } from "../../stack/stack";
 
-export class BinarySearchTree<K extends Comparable<K>, V> {
+export class BinarySearchTree<K extends IComparable<K>, V> {
     private leftChild: BinarySearchTree<K, V> = null;
     private rightChild: BinarySearchTree<K, V> = null;
     private key: K;

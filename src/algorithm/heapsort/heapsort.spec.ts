@@ -65,5 +65,5 @@ describe("heapify", () => {
         expect(arr[2].number).to.equal(3);
         expect(arr[3].number).to.equal(4);
         expect(arr[4].number).to.equal(1);
-    })
+    });
 });

@@ -1,22 +1,22 @@
-import { Comparable } from "../../utility/comparable";
+import { IComparable } from "../../utility/comparable";
 
-function merge<T extends Comparable<T>>(right: T[], left: T[]): T[] {
-  const sorted = [];
-  let rightIndex = 0,
-      leftIndex = 0;
+function merge<T extends IComparable<T>>(right: T[], left: T[]): T[] {
+    const sorted = [];
+    let rightIndex = 0,
+        leftIndex = 0;
 
-  while (rightIndex < right.length && leftIndex < left.length) {
-      if (right[rightIndex].greaterThan(left[leftIndex])) {
-          sorted.push(left[leftIndex++]);
-      } else {
-          sorted.push(right[rightIndex++]);
-      }
-  }
+    while (rightIndex < right.length && leftIndex < left.length) {
+        if (right[rightIndex].greaterThan(left[leftIndex])) {
+            sorted.push(left[leftIndex++]);
+        } else {
+            sorted.push(right[rightIndex++]);
+        }
+    }
 
-  return sorted.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+    return sorted.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
 
-export function mergesort<T extends Comparable<T>>(arr: T[]): T[] {
+export function mergesort<T extends IComparable<T>>(arr: T[]): T[] {
     if (arr.length <= 1) {
         return arr;
     }

@@ -1,7 +1,11 @@
-import { Comparable } from "../../utility/comparable";
+import { IComparable } from "../../utility/comparable";
 import { arraySwap } from "../../utility/swap";
 
-function siftDown<T extends Comparable<T>>(arr: T[], lo: number, hi: number): void {
+function siftDown<T extends IComparable<T>>(
+    arr: T[],
+    lo: number,
+    hi: number
+): void {
     let root = lo;
 
     while (root * 2 + 1 <= hi) {
@@ -25,14 +29,22 @@ function siftDown<T extends Comparable<T>>(arr: T[], lo: number, hi: number): vo
     }
 }
 
-export function heapify<T extends Comparable<T>>(arr: T[], lo: number, hi: number): void {
+export function heapify<T extends IComparable<T>>(
+    arr: T[],
+    lo: number,
+    hi: number
+): void {
     let start = Math.floor((hi - lo - 1) / 2) - 1;
     while (start >= lo) {
         siftDown(arr, start--, hi - lo - 1);
     }
 }
 
-export function heapsort<T extends Comparable<T>>(arr: T[], lo = 0, hi = arr.length - 1): void {
+export function heapsort<T extends IComparable<T>>(
+    arr: T[],
+    lo = 0,
+    hi = arr.length - 1
+): void {
     heapify(arr, lo, hi);
 
     while (lo < hi) {

@@ -1,7 +1,7 @@
 import { arraySwap } from "../../utility/swap";
-import { Comparable } from "../../utility/comparable";
+import { IComparable } from "../../utility/comparable";
 
-export function insertionsort<T extends Comparable<T>>(arr: T[]): void {
+export function insertionsort<T extends IComparable<T>>(arr: T[]): void {
     let i = 1;
     while (i < arr.length) {
         let j = i;

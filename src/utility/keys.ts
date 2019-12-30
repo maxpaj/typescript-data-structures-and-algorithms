@@ -1,6 +1,6 @@
-import { Key } from "../hashtable/hashtable";
+import { IKey } from "../hashtable/hashtable";
 
-export class KeyNumber implements Key<KeyNumber> {
+export class KeyNumber implements IKey<KeyNumber> {
     private key: number;
 
     constructor(n: number) {
@@ -16,7 +16,7 @@ export class KeyNumber implements Key<KeyNumber> {
     }
 }
 
-export class KeyString implements Key<KeyString> {
+export class KeyString implements IKey<KeyString> {
     private key: string;
 
     constructor(str: string) {

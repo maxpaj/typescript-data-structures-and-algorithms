@@ -1,6 +1,6 @@
-import { Comparable } from "../../utility/comparable";
+import { IComparable } from "../../utility/comparable";
 
-export class MinHeap<T extends Comparable<T>> {
+export class MinHeap<T extends IComparable<T>> {
     heap: T[];
 
     constructor() {
