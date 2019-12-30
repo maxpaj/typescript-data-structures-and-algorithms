@@ -1,5 +1,5 @@
 import { BinarySearchTree } from "./binary-search-tree";
-import { ComparableNumber } from "../utility/comparable";
+import { ComparableNumber } from "../../utility/comparable";
 import { expect } from "chai";
 
 describe("BinarySearchTree", () => {

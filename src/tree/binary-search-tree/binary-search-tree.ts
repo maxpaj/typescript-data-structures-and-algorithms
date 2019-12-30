@@ -1,5 +1,5 @@
-import { Comparable } from "../utility/comparable";
-import { Stack } from "stack/stack";
+import { Comparable } from "../../utility/comparable";
+import { Stack } from "../../stack/stack";
 
 export class BinarySearchTree<K extends Comparable<K>, V> {
     private leftChild: BinarySearchTree<K, V> = null;
