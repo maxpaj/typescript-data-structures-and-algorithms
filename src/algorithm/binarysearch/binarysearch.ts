@@ -15,13 +15,3 @@ export function binarysearch<T extends IComparable<T>>(
         return binarysearch(arr, search, lo, index);
     }
 }
-
-/**
- * lo              >              hi
- * ---------------------------------
- *                 lo       <     hi
- * ---------------------------------
- *                 lo  >    hi
- * ---------------------------------
- *                     lo v hi
- */
