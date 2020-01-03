@@ -42,7 +42,7 @@ export class HashTable<K extends IKey<K>, V> {
         return found.value;
     }
 
-    private getBucket(key: K): { key: K, value: V }[] {
+    private getBucket(key: K): { key: K; value: V }[] {
         const index = this.hashKey(key);
         const bucket = this.buckets[index];
         if (!bucket) {
