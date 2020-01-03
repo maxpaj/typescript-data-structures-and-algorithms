@@ -1,6 +1,6 @@
-class Node<T> {
+class ListNode<T> {
     data: T;
-    next: Node<T>;
+    next: ListNode<T>;
 
     constructor(data: T) {
         this.data = data;
@@ -8,14 +8,16 @@ class Node<T> {
 }
 
 export class LinkedList<T> implements Iterable<T> {
-    private head: Node<T>;
+    private head: ListNode<T>;
 
     peek(): T {
         return this.head.data;
     }
 
     size(): number {
-        if (!this.head) { return 0; }
+        if (!this.head) {
+            return 0;
+        }
 
         let size = 1;
         let head = this.head;
@@ -52,7 +54,7 @@ export class LinkedList<T> implements Iterable<T> {
     }
 
     add(value: T, index = -1): void {
-        const newNode = new Node<T>(value);
+        const newNode = new ListNode<T>(value);
 
         // Check if head exists
         if (!this.head) {
@@ -85,10 +87,10 @@ export class LinkedList<T> implements Iterable<T> {
                 }
                 return { value: null, done: true };
             }
-        }
+        };
     }
 
-    private last(): Node<T> {
+    private last(): ListNode<T> {
         let current = this.head;
         while (current.next !== undefined) {
             current = current.next;
@@ -96,7 +98,7 @@ export class LinkedList<T> implements Iterable<T> {
         return current;
     }
 
-    private findNodeByIndex(head: Node<T>, index: number): Node<T> {
+    private findNodeByIndex(head: ListNode<T>, index: number): ListNode<T> {
         let current = head;
         while (index > 0) {
             index--;
