@@ -21,10 +21,8 @@ export class ComparableNumber implements IComparable<ComparableNumber> {
         return this.lesserThan(value) || this.equals(value);
     }
 
-    static random(max?: number): ComparableNumber {
-        return new ComparableNumber(
-            Math.round(Math.random() * max || Number.MAX_SAFE_INTEGER)
-        );
+    static random(max = Number.MAX_SAFE_INTEGER): ComparableNumber {
+        return new ComparableNumber(Math.round(Math.random() * max));
     }
 }
 
