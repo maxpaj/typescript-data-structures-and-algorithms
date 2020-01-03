@@ -17,9 +17,9 @@ function scramble(arr: ComparableNumber[], size: number): void {
 }
 
 /**
- * Runs a test function over a number of array sizes
- * @param sizes
- * @param testFunction
+ * Runs a test function over a number of array sizes, prints the results as a table to console.
+ * @param sizes An array of test sizes, referring to the number of elements for each test. E.g. 100, 1000, 10000
+ * @param testFunction A test function to run the tests over, should return the time taken from process.hrtime(), e.g. ([seconds, nanoseconds])
  */
 export function testArray(
     sizes: number[],
