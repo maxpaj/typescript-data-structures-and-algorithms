@@ -1,8 +1,16 @@
 # Heap
 
-- It's a binary tree
-- It's a complete binary tree (all levels are filled except perhaps the last level)
-- Each node has a value that is greater than (max-heap) or lesser than (min-heap) both of it's children
+-   It's a binary tree
+-   Each node has a value that is greater than (max-heap) both of it's children (min-heap = lesser than)
+-   It's a complete binary tree (all levels are filled except perhaps the last level)
+
+## Applications
+
+-   Priority queues
+    -   Bandwidth management
+    -   Thread/process scheduling
+    -   Dijkstra's algorithm
+-   Heapsort
 
 ## Operations
 
@@ -17,4 +25,3 @@ O(log n) - The node containing the element will travel up at most the number of 
 Removes the root node, then replaces the root with the last node of the tree, then lets the root node travel down the tree until it finds it's correct position in the tree.
 
 O(log n) - The node will travel down at most the number of levels in the tree
-
