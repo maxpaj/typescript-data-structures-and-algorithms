@@ -17,11 +17,11 @@ export class HashTable<K extends IKey<K>, V> {
         if (foundIndex === -1) {
             bucket.push({ key, value });
             return null;
-        } else {
-            const previous = bucket[foundIndex].value;
-            bucket[foundIndex].value = value;
-            return previous;
         }
+
+        const previous = bucket[foundIndex].value;
+        bucket[foundIndex].value = value;
+        return previous;
     }
 
     remove(key: K): V {

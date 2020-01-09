@@ -1,7 +1,7 @@
 import { IComparable } from "../../utility/comparable";
 
 export class MinHeap<T extends IComparable<T>> {
-    heap: T[];
+    private heap: T[];
 
     constructor() {
         this.heap = [];
