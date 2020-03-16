@@ -16,7 +16,7 @@ describe("binarysearch", () => {
             new ComparableNumber(200),
             new ComparableNumber(1882),
             new ComparableNumber(1889),
-            new ComparableNumber(1890)
+            new ComparableNumber(1890),
         ];
 
         expect(binarysearch(arr, new ComparableNumber(4))).to.equal(2);
@@ -36,7 +36,7 @@ describe("binarysearch", () => {
             new ComparableNumber(200),
             new ComparableNumber(1882),
             new ComparableNumber(1889),
-            new ComparableNumber(1890)
+            new ComparableNumber(1890),
         ];
 
         expect(binarysearch(arr, new ComparableNumber(4))).to.equal(2);
