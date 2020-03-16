@@ -13,12 +13,12 @@
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.10.0",
         "mocha": "^7.1.0",
-        "ts-mocha": "^6.0.0",
         "ts-node": "^8.6.2",
         "typescript": "^3.8.3"
     },
     "scripts": {
-        "test": "ts-mocha --paths -p tsconfig.json 'src/**/*.spec.ts'",
+        "watch": "mocha -r ts-node/register -r tsconfig-paths/register --extensions ts --watch --watch-files src 'src/**/*.spec.ts'",
+        "test": "mocha -r ts-node/register -r tsconfig-paths/register --extensions ts 'src/**/*.spec.ts'",
         "lint": "eslint . --ext .ts"
     },
     "repository": {
@@ -31,5 +31,8 @@
     "bugs": {
         "url": "https://github.com/maxpaj/datastructures-and-algorithms/issues"
     },
-    "homepage": "https://github.com/maxpaj/datastructures-and-algorithms#readme"
+    "homepage": "https://github.com/maxpaj/datastructures-and-algorithms#readme",
+    "devDependencies": {
+        "tsconfig-paths": "^3.9.0"
+    }
 }
