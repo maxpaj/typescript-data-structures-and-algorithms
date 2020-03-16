@@ -1,6 +1,6 @@
 import { heapsort } from "../heapsort/heapsort";
 import { IComparable } from "../../utility/comparable";
-import { partition } from "../quicksort/quicksort";
+import { partition } from "algorithm/partition/partition";
 
 function sort<T extends IComparable<T>>(
     arr: T[],
