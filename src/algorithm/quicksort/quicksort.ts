@@ -1,5 +1,5 @@
 import { IComparable } from "../../utility/comparable";
-import { arraySwap } from "../swap/swap";
+import { swap } from "../swap/swap";
 
 export function partition<T extends IComparable<T>>(
     arr: T[],
@@ -12,11 +12,11 @@ export function partition<T extends IComparable<T>>(
 
     for (let j = lo; j <= hi; j++) {
         if (arr[j].lesserThan(pivot)) {
-            arraySwap(arr, index++, j);
+            swap(arr, index++, j);
         }
     }
 
-    arraySwap(arr, index, hi);
+    swap(arr, index, hi);
 
     return index;
 }

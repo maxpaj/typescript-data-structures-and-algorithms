@@ -1,5 +1,5 @@
 import { IComparable } from "../../utility/comparable";
-import { arraySwap } from "../swap/swap";
+import { swap } from "../swap/swap";
 
 function siftDown<T extends IComparable<T>>(
     arr: T[],
@@ -23,7 +23,7 @@ function siftDown<T extends IComparable<T>>(
         if (swap === root) {
             return;
         } else {
-            arraySwap(arr, root, swap);
+            swap(arr, root, swap);
             root = swap;
         }
     }
@@ -48,7 +48,7 @@ export function heapsort<T extends IComparable<T>>(
     heapify(arr, lo, hi);
 
     while (lo < hi) {
-        arraySwap(arr, lo, hi--);
+        swap(arr, lo, hi--);
         siftDown(arr, lo, hi);
     }
 }
