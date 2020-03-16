@@ -1,35 +1,35 @@
 {
-  "name": "datastructures-and-algorithms",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "@types/chai": "^4.2.11",
-    "@types/mocha": "^7.0.2",
-    "@types/node": "^12.12.30",
-    "@typescript-eslint/eslint-plugin": "^2.23.0",
-    "@typescript-eslint/parser": "^2.23.0",
-    "chai": "^4.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "mocha": "^7.1.0",
-    "ts-mocha": "^6.0.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.8.3"
-  },
-  "scripts": {
-    "test": "ts-mocha --paths -p tsconfig.json 'src/**/*.spec.ts'",
-    "lint": "eslint . --ext .ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maxpaj/datastructures-and-algorithms.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/maxpaj/datastructures-and-algorithms/issues"
-  },
-  "homepage": "https://github.com/maxpaj/datastructures-and-algorithms#readme"
+    "name": "datastructures-and-algorithms",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "@types/chai": "^4.2.11",
+        "@types/mocha": "^7.0.2",
+        "@types/node": "^12.12.30",
+        "@typescript-eslint/eslint-plugin": "^2.23.0",
+        "@typescript-eslint/parser": "^2.23.0",
+        "chai": "^4.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "mocha": "^7.1.0",
+        "ts-mocha": "^6.0.0",
+        "ts-node": "^8.6.2",
+        "typescript": "^3.8.3"
+    },
+    "scripts": {
+        "test": "ts-mocha --paths -p tsconfig.json 'src/**/*.spec.ts'",
+        "lint": "eslint . --ext .ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maxpaj/datastructures-and-algorithms.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/maxpaj/datastructures-and-algorithms/issues"
+    },
+    "homepage": "https://github.com/maxpaj/datastructures-and-algorithms#readme"
 }
