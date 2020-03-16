@@ -1,5 +1,5 @@
 import { IComparable } from "../../utility/comparable";
-import { arraySwap } from "../../utility/swap";
+import { arraySwap } from "../swap/swap";
 
 function siftDown<T extends IComparable<T>>(
     arr: T[],

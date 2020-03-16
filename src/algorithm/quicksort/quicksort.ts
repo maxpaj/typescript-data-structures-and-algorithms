@@ -1,5 +1,5 @@
 import { IComparable } from "../../utility/comparable";
-import { arraySwap } from "../../utility/swap";
+import { arraySwap } from "../swap/swap";
 
 export function partition<T extends IComparable<T>>(
     arr: T[],

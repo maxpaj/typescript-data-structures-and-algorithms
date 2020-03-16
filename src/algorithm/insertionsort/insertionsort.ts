@@ -1,4 +1,4 @@
-import { arraySwap } from "../../utility/swap";
+import { arraySwap } from "../swap/swap";
 import { IComparable } from "../../utility/comparable";
 
 export function insertionsort<T extends IComparable<T>>(arr: T[]): void {
