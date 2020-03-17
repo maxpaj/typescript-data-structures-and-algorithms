@@ -1,5 +1,5 @@
 import { BinarySearchTree } from "./binary-search-tree";
-import { ComparableNumber } from "../../utility/comparable";
+import { ComparableNumber } from "../../../utility/comparable";
 import { expect } from "chai";
 
 describe("BinarySearchTree", () => {
@@ -67,12 +67,12 @@ describe("BinarySearchTree", () => {
             bst.insert(new ComparableNumber(1), "DEF");
             bst.insert(new ComparableNumber(3), "GHI");
             bst.insert(new ComparableNumber(-2), "JKL");
-    
+
             const result = [];
             for (const e of bst) {
                 result.push(e);
             }
-    
+
             expect(result[0]).to.equal("JKL");
             expect(result[1]).to.equal("ABC");
             expect(result[2]).to.equal("DEF");

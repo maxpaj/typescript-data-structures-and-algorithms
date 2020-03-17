@@ -1,6 +1,6 @@
 import { Queue } from "../queue/queue";
 import { HashTable } from "../hashtable/hashtable";
-import { KeyNumber } from "../utility/keys";
+import { KeyNumber } from "../../utility/keys";
 
 export class Graph<V> {
     private adjacencyMatrix: number[][];
@@ -8,7 +8,9 @@ export class Graph<V> {
 
     constructor(numberOfVertices: number) {
         this.vertices = new Array<V>();
-        this.adjacencyMatrix = new Array(numberOfVertices).fill(new Array(numberOfVertices).fill(-1));
+        this.adjacencyMatrix = new Array(numberOfVertices).fill(
+            new Array(numberOfVertices).fill(-1)
+        );
     }
 
     addVertex(data: V): void {
@@ -16,7 +18,10 @@ export class Graph<V> {
     }
 
     addEdge(v1: number, v2: number, edge = 0): void {
-        if (this.vertices[v1] === undefined || this.vertices[v2] === undefined) {
+        if (
+            this.vertices[v1] === undefined ||
+            this.vertices[v2] === undefined
+        ) {
             throw "Missing vertex";
         }
 
@@ -27,7 +32,9 @@ export class Graph<V> {
     // Breadth first search
     isReachable(v1: number, v2: number): boolean {
         const neighbours = new Queue<number>();
-        const visited = new HashTable<KeyNumber, boolean>(this.adjacencyMatrix.length);
+        const visited = new HashTable<KeyNumber, boolean>(
+            this.adjacencyMatrix.length
+        );
         neighbours.enqueue(v1);
 
         while (!neighbours.isEmpty()) {

@@ -1,4 +1,4 @@
-import { IComparable } from "../../utility/comparable";
+import { IComparable } from "../../../utility/comparable";
 import { Stack } from "../../stack/stack";
 
 export class BinarySearchTree<K extends IComparable<K>, V> {
@@ -70,7 +70,7 @@ export class BinarySearchTree<K extends IComparable<K>, V> {
     toString(): string {
         return "" + this.key;
     }
-    
+
     [Symbol.iterator](): Iterator<V> {
         const stack = new Stack<BinarySearchTree<K, V>>();
         let current = this as BinarySearchTree<K, V>;
@@ -87,9 +87,9 @@ export class BinarySearchTree<K extends IComparable<K>, V> {
                     current = next.rightChild;
                     return { value: next.value, done: false };
                 }
-                
+
                 return { value: null, done: true };
-            }
-        }
+            },
+        };
     }
 }

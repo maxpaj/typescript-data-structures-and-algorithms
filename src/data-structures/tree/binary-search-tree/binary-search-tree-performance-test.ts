@@ -1,6 +1,6 @@
 import { BinarySearchTree } from "./binary-search-tree";
-import { testArray } from "../../utility/performance";
-import { ComparableNumber } from "../../utility/comparable";
+import { testArray } from "../../../utility/performance";
+import { ComparableNumber } from "../../../utility/comparable";
 
 function treeSearchTest(arr: ComparableNumber[]): [number, number] {
     const root = new BinarySearchTree(

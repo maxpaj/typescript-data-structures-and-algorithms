@@ -1,4 +1,4 @@
-import { IKey } from "../hashtable/hashtable";
+import { IKey } from "../data-structures/hashtable/hashtable";
 
 export class KeyNumber implements IKey<KeyNumber> {
     private key: number;
@@ -28,6 +28,8 @@ export class KeyString implements IKey<KeyString> {
     }
 
     hashCode(): number {
-        return this.key.split("").reduce((sum, curr) => sum + curr.charCodeAt(0), 0);
+        return this.key
+            .split("")
+            .reduce((sum, curr) => sum + curr.charCodeAt(0), 0);
     }
 }

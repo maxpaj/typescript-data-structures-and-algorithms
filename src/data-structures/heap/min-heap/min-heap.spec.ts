@@ -1,5 +1,5 @@
 import { MinHeap } from "./min-heap";
-import { ComparableNumber } from "../../utility/comparable";
+import { ComparableNumber } from "../../../utility/comparable";
 import { expect } from "chai";
 
 describe("MinHeap", () => {

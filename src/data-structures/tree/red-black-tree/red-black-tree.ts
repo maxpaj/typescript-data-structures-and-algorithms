@@ -1,4 +1,4 @@
-import { IComparable } from "../../utility/comparable";
+import { IComparable } from "../../../utility/comparable";
 
 export class RedBlackTree<K extends IComparable<K>, V> {
     private leftChild: RedBlackTree<K, V>;

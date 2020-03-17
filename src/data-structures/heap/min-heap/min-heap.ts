@@ -1,4 +1,4 @@
-import { IComparable } from "../../utility/comparable";
+import { IComparable } from "../../../utility/comparable";
 
 export class MinHeap<T extends IComparable<T>> {
     private heap: T[];

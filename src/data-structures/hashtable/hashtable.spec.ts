@@ -1,6 +1,6 @@
 import { HashTable } from "./hashtable";
 import { expect } from "chai";
-import { KeyString } from "../utility/keys";
+import { KeyString } from "../../utility/keys";
 
 describe("HashTable", () => {
     describe("get", () => {
@@ -23,7 +23,7 @@ describe("HashTable", () => {
             const t = new HashTable<KeyString, number>(10);
             t.set(new KeyString("ABC"), 123);
             expect(t.get(new KeyString("ABC"))).to.equal(123);
-            
+
             t.set(new KeyString("ABC"), 456);
             expect(t.get(new KeyString("ABC"))).to.equal(456);
         });
@@ -32,7 +32,7 @@ describe("HashTable", () => {
             const t = new HashTable<KeyString, number>(10);
             expect(t.set(new KeyString("ABC"), 123)).to.equal(null);
             expect(t.get(new KeyString("ABC"))).to.equal(123);
-            
+
             expect(t.set(new KeyString("ABC"), 456)).to.equal(123);
             expect(t.get(new KeyString("ABC"))).to.equal(456);
         });
