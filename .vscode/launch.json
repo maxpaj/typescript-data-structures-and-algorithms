@@ -12,10 +12,12 @@
             "args": [
                 "-r",
                 "ts-node/register",
+                "-r",
+                "tsconfig-paths/register",
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/src/**/*.spec.ts",
+                "${workspaceFolder}/src/**/*.spec.ts"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
@@ -29,10 +31,12 @@
             "args": [
                 "-r",
                 "ts-node/register",
+                "-r",
+                "tsconfig-paths/register",
                 "--timeout",
                 "999999",
                 "--colors",
-                "${file}",
+                "${file}"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
