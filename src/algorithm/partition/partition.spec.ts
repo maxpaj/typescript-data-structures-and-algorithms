@@ -3,7 +3,7 @@ import { partition } from "./partition";
 import { expect } from "chai";
 
 describe("partition", () => {
-    it("should partially sort the given interval of an array", () => {
+    it("should partition the given interval of an array", () => {
         const arr = [
             new ComparableNumber(12),
             new ComparableNumber(9),
@@ -12,7 +12,12 @@ describe("partition", () => {
             new ComparableNumber(10),
         ];
 
-        partition(arr, 0, arr.length - 1);
+        partition(
+            arr,
+            e => e.lesserThan(arr[arr.length - 1]),
+            0,
+            arr.length - 1
+        );
 
         expect(arr[0].number).to.equal(9);
         expect(arr[1].number).to.equal(7);

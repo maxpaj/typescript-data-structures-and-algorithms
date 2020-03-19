@@ -7,7 +7,7 @@ export function quicksort<T extends IComparable<T>>(
     hi = arr.length - 1
 ): void {
     if (lo < hi) {
-        const p = partition(arr, lo, hi);
+        const p = partition(arr, e => e.lesserThan(arr[hi]), lo, hi);
         quicksort(arr, lo, p - 1);
         quicksort(arr, p + 1, hi);
     }

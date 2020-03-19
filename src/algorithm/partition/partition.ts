@@ -3,15 +3,14 @@ import { swap } from "algorithm/swap/swap";
 
 export function partition<T extends IComparable<T>>(
     arr: T[],
+    predicate: (e: T) => boolean,
     lo: number,
     hi: number
 ): number {
-    const pivot = arr[hi];
-
     let index = lo;
 
     for (let j = lo; j <= hi; j++) {
-        if (arr[j].lesserThan(pivot)) {
+        if (predicate(arr[j])) {
             swap(arr, index++, j);
         }
     }

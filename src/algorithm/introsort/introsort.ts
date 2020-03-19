@@ -14,7 +14,7 @@ function sort<T extends IComparable<T>>(
     } else if (maxdepth === 0) {
         heapsort(arr, lo, hi);
     } else {
-        const p = partition(arr, lo, hi);
+        const p = partition(arr, e => e.lesserThan(arr[hi]), lo, hi);
         sort(arr, 0, p, maxdepth - 1);
         sort(arr, p, n - 1, maxdepth - 1);
     }
