@@ -1,7 +1,6 @@
-import { IComparable } from "utility/comparable";
 import { swap } from "algorithm/swap/swap";
 
-export function partition<T extends IComparable<T>>(
+export function partition<T>(
     arr: T[],
     predicate: (e: T) => boolean,
     lo: number,
