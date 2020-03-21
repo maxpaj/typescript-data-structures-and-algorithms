@@ -1,12 +1,10 @@
-import { IComparable } from "utility/comparable";
-
-export function merge<T extends IComparable<T>>(right: T[], left: T[]): T[] {
+export function merge<T extends number>(right: T[], left: T[]): T[] {
     const sorted = [];
     let rightIndex = 0,
         leftIndex = 0;
 
     while (rightIndex < right.length && leftIndex < left.length) {
-        if (right[rightIndex].greaterThan(left[leftIndex])) {
+        if (right[rightIndex] > left[leftIndex]) {
             sorted.push(left[leftIndex++]);
         } else {
             sorted.push(right[rightIndex++]);

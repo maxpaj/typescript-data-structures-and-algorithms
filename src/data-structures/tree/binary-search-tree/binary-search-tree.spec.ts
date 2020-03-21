@@ -1,19 +1,15 @@
 import { BinarySearchTree } from "./binary-search-tree";
-import { ComparableNumber } from "../../../utility/comparable";
 import { expect } from "chai";
 
 describe("BinarySearchTree", () => {
     describe("search", () => {
         it("should return the node given by the key", () => {
-            const bst = new BinarySearchTree<ComparableNumber, string>(
-                new ComparableNumber(0),
-                "ABC"
-            );
-            bst.insert(new ComparableNumber(1), "DEF");
-            bst.insert(new ComparableNumber(3), "GHI");
-            bst.insert(new ComparableNumber(-2), "JKL");
+            const bst = new BinarySearchTree<number, string>(0, "ABC");
+            bst.insert(1, "DEF");
+            bst.insert(3, "GHI");
+            bst.insert(-2, "JKL");
 
-            const found = bst.search(new ComparableNumber(-2));
+            const found = bst.search(-2);
 
             expect(found).to.equal("JKL");
         });
@@ -21,16 +17,13 @@ describe("BinarySearchTree", () => {
 
     describe("remove", () => {
         it("should remove the node given by the key", () => {
-            const bst = new BinarySearchTree<ComparableNumber, string>(
-                new ComparableNumber(0),
-                "ABC"
-            );
-            bst.insert(new ComparableNumber(1), "DEF");
-            bst.insert(new ComparableNumber(3), "GHI");
-            bst.insert(new ComparableNumber(-2), "JKL");
-            bst.remove(new ComparableNumber(1));
+            const bst = new BinarySearchTree<number, string>(0, "ABC");
+            bst.insert(1, "DEF");
+            bst.insert(3, "GHI");
+            bst.insert(-2, "JKL");
+            bst.remove(1);
 
-            const found = bst.search(new ComparableNumber(1));
+            const found = bst.search(1);
 
             expect(found).to.equal(null);
         });
@@ -38,16 +31,13 @@ describe("BinarySearchTree", () => {
 
     describe("inorder", () => {
         it("should iterate the tree in the correct order", () => {
-            const bst = new BinarySearchTree<ComparableNumber, string>(
-                new ComparableNumber(0),
-                "ABC"
-            );
-            bst.insert(new ComparableNumber(1), "DEF");
-            bst.insert(new ComparableNumber(3), "GHI");
-            bst.insert(new ComparableNumber(-2), "JKL");
+            const bst = new BinarySearchTree<number, string>(0, "ABC");
+            bst.insert(1, "DEF");
+            bst.insert(3, "GHI");
+            bst.insert(-2, "JKL");
 
             const order = [];
-            bst.inorder((n: BinarySearchTree<ComparableNumber, string>) => {
+            bst.inorder((n: BinarySearchTree<number, string>) => {
                 order.push(n.value);
             });
 
@@ -60,13 +50,10 @@ describe("BinarySearchTree", () => {
 
     describe("iterator", () => {
         it("should iterate in-order", () => {
-            const bst = new BinarySearchTree<ComparableNumber, string>(
-                new ComparableNumber(0),
-                "ABC"
-            );
-            bst.insert(new ComparableNumber(1), "DEF");
-            bst.insert(new ComparableNumber(3), "GHI");
-            bst.insert(new ComparableNumber(-2), "JKL");
+            const bst = new BinarySearchTree<number, string>(0, "ABC");
+            bst.insert(1, "DEF");
+            bst.insert(3, "GHI");
+            bst.insert(-2, "JKL");
 
             const result = [];
             for (const e of bst) {

@@ -1,10 +1,9 @@
 import { BinarySearchTree } from "./binary-search-tree";
 import { testArray } from "../../../utility/performance";
-import { ComparableNumber } from "../../../utility/comparable";
 
-function treeSearchTest(arr: ComparableNumber[]): [number, number] {
+function treeSearchTest(arr: number[]): [number, number] {
     const root = new BinarySearchTree(
-        ComparableNumber.random(),
+        Math.random() * Number.MAX_SAFE_INTEGER,
         arr.length / 2
     );
 

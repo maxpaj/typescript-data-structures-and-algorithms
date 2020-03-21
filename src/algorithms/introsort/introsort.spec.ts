@@ -1,50 +1,21 @@
-import { ComparableNumber } from "../../utility/comparable";
 import { expect } from "chai";
 import { introsort } from "./introsort";
 
 describe("introsort", () => {
     const arrays = [
-        [new ComparableNumber(1)],
-        [new ComparableNumber(1), new ComparableNumber(1)],
-        [
-            new ComparableNumber(1),
-            new ComparableNumber(1),
-            new ComparableNumber(1),
-            new ComparableNumber(1)
-        ],
-        [
-            new ComparableNumber(3),
-            new ComparableNumber(7),
-            new ComparableNumber(10),
-            new ComparableNumber(-4),
-            new ComparableNumber(2),
-            new ComparableNumber(3),
-            new ComparableNumber(9)
-        ],
-        [
-            new ComparableNumber(3),
-            new ComparableNumber(7),
-            new ComparableNumber(10),
-            new ComparableNumber(-4),
-            new ComparableNumber(2),
-            new ComparableNumber(3),
-            new ComparableNumber(9),
-            new ComparableNumber(3),
-            new ComparableNumber(7),
-            new ComparableNumber(10),
-            new ComparableNumber(-4),
-            new ComparableNumber(2),
-            new ComparableNumber(3),
-            new ComparableNumber(9)
-        ]
+        [1],
+        [1, 1],
+        [1, 1, 1, 1],
+        [3, 7, 10, -4, 2, 3, 9],
+        [3, 7, 10, -4, 2, 3, 9, 3, 7, 10, -4, 2, 3, 9],
     ];
 
-    arrays.forEach(arr => {
-        it("should sort an array correctly", () => {
+    it("should sort an array correctly", () => {
+        arrays.forEach(arr => {
             introsort(arr);
 
             for (let i = 0; i < arr.length - 1; i++) {
-                expect(arr[i].number).to.be.lte(arr[i + 1].number);
+                expect(arr[i]).to.be.lte(arr[i + 1]);
             }
         });
     });

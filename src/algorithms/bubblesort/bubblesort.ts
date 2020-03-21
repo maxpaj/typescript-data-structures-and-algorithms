@@ -1,10 +1,13 @@
-import { IComparable } from "../../utility/comparable";
 import { swap } from "../swap/swap";
 
-export function bubblebort<T extends IComparable<T>>(arr: T[]): T[] {
-    for (let i = 0; i < arr.length; i++) {
-        for (let k = i; k < arr.length; k++) {
-            if (arr[i].greaterThan(arr[k])) {
+export function bubblesort<T extends number>(
+    arr: T[],
+    lo: number = 0,
+    hi: number = arr.length - 1
+): T[] {
+    for (let i = lo; i <= hi; i++) {
+        for (let k = i; k <= hi; k++) {
+            if (arr[i] > arr[k]) {
                 swap(arr, i, k);
             }
         }

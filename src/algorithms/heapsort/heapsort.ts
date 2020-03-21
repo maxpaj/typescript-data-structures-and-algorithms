@@ -1,9 +1,8 @@
-import { IComparable } from "../../utility/comparable";
 import { swap } from "../swap/swap";
-import { heapmake } from "algorithm/heapmake/heapmake";
-import { heapadjust } from "algorithm/heapadjust/heapadjust";
+import { heapmake } from "algorithms/heapmake/heapmake";
+import { heapadjust } from "algorithms/heapadjust/heapadjust";
 
-export function heapsort<T extends IComparable<T>>(
+export function heapsort<T extends number>(
     arr: T[],
     lo = 0,
     hi = arr.length - 1

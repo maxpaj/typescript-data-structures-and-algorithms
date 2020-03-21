@@ -1,6 +1,4 @@
-import { IComparable } from "../../../utility/comparable";
-
-export class MinHeap<T extends IComparable<T>> {
+export class MinHeap<T extends number> {
     private heap: T[];
 
     constructor() {
@@ -49,7 +47,7 @@ export class MinHeap<T extends IComparable<T>> {
         const parentIndex = Math.floor((currentIndex - 1) / 2);
 
         // If parent is bigger than element, swap them
-        if (parentIndex > -1 && this.heap[parentIndex].greaterThan(element)) {
+        if (parentIndex > -1 && this.heap[parentIndex] > element) {
             const tmp = this.heap[parentIndex];
             this.heap[parentIndex] = element;
             this.heap[currentIndex] = tmp;
@@ -68,14 +66,14 @@ export class MinHeap<T extends IComparable<T>> {
         // Check if children are in the right place compared to the parent
         if (
             this.heap.length > leftIndex &&
-            this.heap[leftIndex].lesserThan(this.heap[minIndex])
+            this.heap[leftIndex] < this.heap[minIndex]
         ) {
             minIndex = leftIndex;
         }
 
         if (
             this.heap.length > rightIndex &&
-            this.heap[rightIndex].lesserThan(this.heap[minIndex])
+            this.heap[rightIndex] < this.heap[minIndex]
         ) {
             minIndex = rightIndex;
         }

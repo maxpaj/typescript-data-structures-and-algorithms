@@ -1,7 +1,6 @@
-import { IComparable } from "../../utility/comparable";
-import { merge } from "algorithm/merge/merge";
+import { merge } from "algorithms/merge/merge";
 
-export function mergesort<T extends IComparable<T>>(arr: T[]): T[] {
+export function mergesort<T extends number>(arr: T[]): T[] {
     if (arr.length <= 1) {
         return arr;
     }

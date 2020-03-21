@@ -1,7 +1,6 @@
-import { IComparable } from "utility/comparable";
-import { heapadjust } from "algorithm/heapadjust/heapadjust";
+import { heapadjust } from "algorithms/heapadjust/heapadjust";
 
-export function heapmake<T extends IComparable<T>>(
+export function heapmake<T extends number>(
     arr: T[],
     lo: number,
     hi: number

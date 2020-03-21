@@ -1,10 +1,9 @@
 import { testArray } from "../../utility/performance";
-import { ComparableNumber } from "../../utility/comparable";
-import { bubblebort } from "./bubblesort";
+import { bubblesort } from "./bubblesort";
 
-function test(arr: ComparableNumber[]): [number, number] {
+function test(arr: number[]): [number, number] {
     const start = process.hrtime();
-    bubblebort(arr);
+    bubblesort(arr);
     return process.hrtime(start);
 }
 

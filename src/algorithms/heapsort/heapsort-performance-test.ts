@@ -1,8 +1,7 @@
 import { testArray } from "../../utility/performance";
-import { ComparableNumber } from "../../utility/comparable";
 import { heapsort } from "./heapsort";
 
-function test(arr: ComparableNumber[]): [number, number] {
+function test(arr: number[]): [number, number] {
     const start = process.hrtime();
     heapsort(arr);
     return process.hrtime(start);

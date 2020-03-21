@@ -1,7 +1,7 @@
 import { IComparable } from "../../../utility/comparable";
 import { Stack } from "../../stack/stack";
 
-export class BinarySearchTree<K extends IComparable<K>, V> {
+export class BinarySearchTree<K extends number, V> {
     private leftChild: BinarySearchTree<K, V> = null;
     private rightChild: BinarySearchTree<K, V> = null;
     private key: K;
@@ -13,13 +13,13 @@ export class BinarySearchTree<K extends IComparable<K>, V> {
     }
 
     insert(key: K, value: V): void {
-        if (key.lesserThan(this.key)) {
+        if (key < this.key) {
             if (this.leftChild === null) {
                 this.leftChild = new BinarySearchTree<K, V>(key, value);
             } else {
                 this.leftChild.insert(key, value);
             }
-        } else if (key.greaterThan(this.key)) {
+        } else if (key > this.key) {
             if (this.rightChild === null) {
                 this.rightChild = new BinarySearchTree<K, V>(key, value);
             } else {
@@ -29,14 +29,14 @@ export class BinarySearchTree<K extends IComparable<K>, V> {
     }
 
     remove(key: K): void {
-        if (this.leftChild !== null && key.lesserThan(this.key)) {
-            if (this.leftChild.key.equals(key)) {
+        if (this.leftChild !== null && key < this.key) {
+            if (this.leftChild.key === key) {
                 this.leftChild = null;
             } else {
                 this.leftChild.remove(key);
             }
-        } else if (this.rightChild !== null && key.greaterThan(this.key)) {
-            if (this.rightChild.key.equals(key)) {
+        } else if (this.rightChild !== null && key > this.key) {
+            if (this.rightChild.key === key) {
                 this.rightChild = null;
             } else {
                 this.rightChild.remove(key);
@@ -45,13 +45,13 @@ export class BinarySearchTree<K extends IComparable<K>, V> {
     }
 
     search(key: K): V {
-        if (this.key.equals(key)) {
+        if (this.key === key) {
             return this.value;
         }
 
-        if (this.key.greaterThan(key) && this.leftChild) {
+        if (this.key > key && this.leftChild) {
             return this.leftChild.search(key);
-        } else if (this.key.lesserThan(key) && this.rightChild) {
+        } else if (this.key < key && this.rightChild) {
             return this.rightChild.search(key);
         }
         return null;

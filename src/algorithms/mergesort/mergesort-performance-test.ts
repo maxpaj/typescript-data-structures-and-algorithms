@@ -1,8 +1,7 @@
 import { testArray } from "../../utility/performance";
-import { ComparableNumber } from "../../utility/comparable";
 import { mergesort } from "./mergesort";
 
-function test(arr: ComparableNumber[]): [number, number] {
+function test(arr: number[]): [number, number] {
     const start = process.hrtime();
     mergesort(arr);
     return process.hrtime(start);

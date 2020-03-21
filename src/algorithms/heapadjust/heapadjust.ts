@@ -1,7 +1,6 @@
-import { IComparable } from "utility/comparable";
-import { swap } from "algorithm/swap/swap";
+import { swap } from "algorithms/swap/swap";
 
-export function heapadjust<T extends IComparable<T>>(
+export function heapadjust<T extends number>(
     arr: T[],
     lo: number,
     hi: number
@@ -12,11 +11,11 @@ export function heapadjust<T extends IComparable<T>>(
         const child = root * 2 + 1;
         let swapIndex = root;
 
-        if (arr[swapIndex].lesserThan(arr[child])) {
+        if (arr[swapIndex] < arr[child]) {
             swapIndex = child;
         }
 
-        if (child + 1 <= hi && arr[swapIndex].lesserThan(arr[child + 1])) {
+        if (child + 1 <= hi && arr[swapIndex] < arr[child + 1]) {
             swapIndex = child + 1;
         }
 

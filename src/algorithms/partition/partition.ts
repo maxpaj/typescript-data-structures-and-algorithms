@@ -1,4 +1,4 @@
-import { swap } from "algorithm/swap/swap";
+import { swap } from "algorithms/swap/swap";
 
 export function partition<T>(
     arr: T[],

@@ -2,17 +2,14 @@ import { ComparableNumber } from "./comparable";
 
 const ITERATIONS = 10;
 
-function run(
-    arr: ComparableNumber[],
-    f: (arr: ComparableNumber[]) => [number, number]
-): number {
+function run(arr: number[], f: (arr: number[]) => [number, number]): number {
     const time = f(arr);
     return time[0] * 1000 + time[1] / 1e6;
 }
 
-function scramble(arr: ComparableNumber[], size: number): void {
+function scramble(arr: number[], size: number): void {
     for (let i = 0; i < size; i++) {
-        arr[i] = ComparableNumber.random();
+        arr[i] = Math.random() * Number.MAX_SAFE_INTEGER;
     }
 }
 
@@ -23,7 +20,7 @@ function scramble(arr: ComparableNumber[], size: number): void {
  */
 export function testArray(
     sizes: number[],
-    testFunction: (arr: ComparableNumber[]) => [number, number]
+    testFunction: (arr: number[]) => [number, number]
 ): void {
     const runs: { size: number; average: number; change: number }[] = [];
     const largest = sizes.reduce((largest, current) => {
@@ -44,7 +41,7 @@ export function testArray(
         runs.push({
             size,
             average: average,
-            change: i !== 0 ? average / runs[0].average : 0
+            change: i !== 0 ? average / runs[0].average : 0,
         });
     }
 
