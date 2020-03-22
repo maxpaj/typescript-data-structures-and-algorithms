@@ -1,4 +1,4 @@
-import { adjacent_transform } from "./adjacent_difference";
+import { adjacent_transform } from "./adjacent_transform";
 import { expect } from "chai";
 
 describe("adjacent_transform", () => {
