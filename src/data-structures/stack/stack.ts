@@ -1,4 +1,4 @@
-import { LinkedList } from "../linked-list/linked-list";
+import { LinkedList } from "../linked_list/linked_list";
 
 export class Stack<T> {
     private list: LinkedList<T>;
