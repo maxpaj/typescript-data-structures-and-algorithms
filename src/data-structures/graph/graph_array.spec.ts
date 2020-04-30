@@ -1,46 +1,127 @@
-import { Graph } from "./graph_array";
+import { GraphArray } from "./graph_array";
 import { expect } from "chai";
 
 describe("Graph", () => {
+    describe("addVertext", () => {
+        it("should add a vertex to the graph", () => {
+            const g = new GraphArray<string, number>(3);
+            g.addVertex({ data: "A", label: 0 });
+            expect(g.containsVertex({ data: "A", label: 0 })).to.equal(true);
+            expect(g.containsVertex({ data: "B", label: 1 })).to.equal(false);
+        });
+    });
+
+    describe("addEdge", () => {
+        it("should add an edge to the graph", () => {
+            const g = new GraphArray<string, number>(3);
+            const vertices = [
+                {
+                    data: "A",
+                    label: 0,
+                },
+                {
+                    data: "B",
+                    label: 1,
+                },
+                {
+                    data: "C",
+                    label: 2,
+                },
+            ];
+
+            g.addVertex(vertices[0]);
+            g.addVertex(vertices[1]);
+            g.addVertex(vertices[2]);
+
+            g.addEdge(vertices[0], vertices[1], 0);
+
+            expect(g.containsEdge(vertices[0], vertices[1])).to.equal(true);
+            expect(g.containsEdge(vertices[1], vertices[0])).to.equal(true);
+            expect(g.containsEdge(vertices[0], vertices[2])).to.equal(false);
+        });
+    });
+
+    describe("getNeighbors", () => {
+        const g = new GraphArray<string, number>(3);
+        const vertices = [
+            {
+                data: "A",
+                label: 0,
+            },
+            {
+                data: "B",
+                label: 1,
+            },
+            {
+                data: "C",
+                label: 2,
+            },
+        ];
+
+        g.addVertex(vertices[0]);
+        g.addVertex(vertices[1]);
+        g.addVertex(vertices[2]);
+
+        g.addEdge(vertices[0], vertices[1], 0);
+
+        const neighbors = g.getNeighbors(vertices[0]);
+        expect(neighbors[0].data).to.equal("B");
+    });
+
     describe("isReachable", () => {
         it("should return true if two nodes are reachable", () => {
-            const g1 = new Graph<number>(3);
-            g1.addVertex(0);
-            g1.addVertex(0);
-            g1.addVertex(0);
-            g1.addVertex(0);
-            g1.addVertex(0);
+            const g1 = new GraphArray<string, number>(3);
+            const vertices = [
+                { data: "A", label: 0 },
+                { data: "B", label: 1 },
+                { data: "C", label: 2 },
+                { data: "D", label: 3 },
+                { data: "E", label: 4 },
+                { data: "F", label: 5 },
+                { data: "G", label: 6 },
+            ];
 
-            g1.addEdge(0, 1);
+            vertices.forEach((v) => {
+                g1.addVertex(v);
+            });
 
-            expect(g1.isReachable(0, 1)).to.equal(true);
+            g1.addEdge(vertices[0], vertices[1], 1);
 
-            const g2 = new Graph<number>(10);
-            g2.addVertex(0);
-            g2.addVertex(0);
-            g2.addVertex(0);
-            g2.addVertex(0);
-            g2.addVertex(0);
-            g2.addVertex(0);
+            expect(g1.isReachable(vertices[0], vertices[1])).to.equal(true);
 
-            g2.addEdge(0, 1);
-            g2.addEdge(1, 2);
-            g2.addEdge(2, 4);
-            g2.addEdge(4, 5);
-            g2.addEdge(3, 1);
+            const g2 = new GraphArray<string, number>(10);
 
-            expect(g2.isReachable(0, 5)).to.equal(true);
+            vertices.forEach((v) => {
+                g2.addVertex(v);
+            });
+
+            g2.addEdge(vertices[0], vertices[1], 1);
+            g2.addEdge(vertices[1], vertices[2], 1);
+            g2.addEdge(vertices[2], vertices[4], 1);
+            g2.addEdge(vertices[4], vertices[5], 1);
+            g2.addEdge(vertices[3], vertices[1], 1);
+
+            expect(g2.isReachable(vertices[0], vertices[5])).to.equal(true);
         });
 
         it("should return false if two nodes are not reachable", () => {
-            const g1 = new Graph<number>(3);
-            g1.addVertex(0);
-            g1.addVertex(0);
+            const g1 = new GraphArray<number, number>(3);
 
-            g1.addEdge(0, 1);
+            const vertices = [
+                { data: 0, label: 0 },
+                { data: 0, label: 1 },
+                { data: 0, label: 2 },
+                { data: 0, label: 3 },
+            ];
 
-            expect(g1.isReachable(0, 2)).to.equal(false);
-            expect(g1.isReachable(0, 3)).to.equal(false);
+            vertices.forEach((v) => {
+                g1.addVertex(v);
+            });
+
+            g1.addEdge(vertices[0], vertices[1], 1);
+
+            expect(g1.isReachable(vertices[0], vertices[2])).to.equal(false);
+            expect(g1.isReachable(vertices[0], vertices[3])).to.equal(false);
         });
     });
 });

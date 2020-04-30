@@ -1,5 +1,5 @@
 import { make_heap } from "algorithms/make_heap/make_heap";
-import { heapadjust } from "algorithms/heap_adjust/heap_adjust";
+import { heap_adjust } from "algorithms/heap_adjust/heap_adjust";
 import { swap } from "algorithms/swap/swap";
 
 export function heapsort<T extends number>(
@@ -11,6 +11,6 @@ export function heapsort<T extends number>(
 
     while (lo < hi) {
         swap(arr, lo, hi--);
-        heapadjust(arr, lo, hi);
+        heap_adjust(arr, lo, hi);
     }
 }

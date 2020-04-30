@@ -2,21 +2,21 @@ import { LinkedList } from "./linked_list";
 import { expect } from "chai";
 
 describe("LinkedList", () => {
-    describe("add", () => {
+    describe("addLast", () => {
         it("should add elements to the end of the list", () => {
             const list = new LinkedList<number>();
 
             [9, 10, 2, 3, -1].forEach(n => {
-                list.add(n);
+                list.insertLast(n);
             });
 
-            expect(list.peek()).to.equal(9);
-            expect(list.size()).to.equal(5);
+            expect(list.getFirst()).to.equal(9);
+            expect(list.getSize()).to.equal(5);
 
-            list.add(1);
+            list.insertLast(1);
 
-            expect(list.peek()).to.equal(9);
-            expect(list.size()).to.equal(6);
+            expect(list.getFirst()).to.equal(9);
+            expect(list.getSize()).to.equal(6);
         });
     });
 
@@ -25,10 +25,10 @@ describe("LinkedList", () => {
             const list = new LinkedList<number>();
 
             [9, 10, 2, 3, -1, 5].forEach(n => {
-                list.add(n);
+                list.insertLast(n);
             });
 
-            const removed = list.remove();
+            const removed = list.removeFirst();
             expect(removed).to.equal(9);
         });
     });
@@ -38,10 +38,10 @@ describe("LinkedList", () => {
             const list = new LinkedList<number>();
 
             [9, 10, 2, 3, -1, 5].forEach(n => {
-                list.add(n);
+                list.insertLast(n);
             });
 
-            const removed = list.remove(0);
+            const removed = list.removeAt(0);
             expect(removed).to.equal(9);
         });
     });
@@ -51,11 +51,24 @@ describe("LinkedList", () => {
             const list = new LinkedList<number>();
 
             [9, 10, 2, 3, -1, 5].forEach(n => {
-                list.add(n);
+                list.insertLast(n);
             });
 
-            expect(list.size()).to.equal(6);
+            expect(list.getSize()).to.equal(6);
         });
+    });
+
+    describe("isEmpty", () => {
+        const list = new LinkedList<number>();
+        expect(list.isEmpty()).to.equal(true);
+
+        list.insertLast(1);
+
+        expect(list.isEmpty()).to.equal(false);
+
+        list.removeFirst();
+
+        expect(list.isEmpty()).to.equal(true);
     });
 
     describe("iterator", () => {
@@ -63,7 +76,7 @@ describe("LinkedList", () => {
             const list = new LinkedList<number>();
 
             [9, 10, 2, 3, -1, 5].forEach(n => {
-                list.add(n);
+                list.insertLast(n);
             });
 
             const result = [];

@@ -8,22 +8,22 @@ export class Queue<T> {
     }
 
     isEmpty(): boolean {
-        return this.list.size() === 0;
+        return this.list.getSize() === 0;
     }
 
     size(): number {
-        return this.list.size();
+        return this.list.getSize();
     }
 
     peek(): T {
-        return this.list.peek();
+        return this.list.getFirst();
     }
 
     enqueue(value: T): void {
-        this.list.add(value);
+        this.list.insertLast(value);
     }
 
     dequeue(): T {
-        return this.list.remove(0);
+        return this.list.removeAt(0);
     }
 }

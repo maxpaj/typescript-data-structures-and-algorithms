@@ -1,56 +1,93 @@
 import { Queue } from "../queue/queue";
 import { HashTable } from "../hashtable/hashtable";
 import { KeyNumber } from "../../utility/keys";
+import { Graph, Edge, Vertex } from "./graph";
 
-export class Graph<V> {
-    private adjacencyMatrix: number[][];
-    private vertices: V[];
+export class GraphArray<V, E> implements Graph<V, E> {
+    private adjacency_matrix: Edge<E>[][];
+    private vertices: Vertex<V>[];
 
-    constructor(numberOfVertices: number) {
-        this.vertices = new Array<V>();
-        this.adjacencyMatrix = new Array(numberOfVertices).fill(
-            new Array(numberOfVertices).fill(-1)
+    constructor(number_of_vertices: number) {
+        this.vertices = new Array<Vertex<V>>();
+        this.adjacency_matrix = new Array(number_of_vertices);
+        for (let i = 0; i < this.adjacency_matrix.length; i++) {
+            this.adjacency_matrix[i] = new Array(number_of_vertices).fill(null);
+        }
+    }
+
+    clear(): void {
+        throw new Error("Method not implemented.");
+    }
+
+    getEdges(): E[] {
+        throw new Error("Method not implemented.");
+    }
+
+    getVertices(): Vertex<V>[] {
+        return this.vertices;
+    }
+
+    containsEdge(v1: Vertex<V>, v2: Vertex<V>): boolean {
+        const index1 = this.vertices.findIndex((v) => v.label === v1.label);
+        const index2 = this.vertices.findIndex((v) => v.label === v2.label);
+        return this.adjacency_matrix[index1][index2] !== null;
+    }
+
+    getNeighbors(v: Vertex<V>) {
+        const index = this.vertices.findIndex((ve) => ve.label === v.label);
+
+        // Map edges to vertices
+        const mapped = this.adjacency_matrix[index].map(
+            (v, i) => v !== null && this.vertices[i]
         );
+
+        return mapped.filter((e) => e);
     }
 
-    addVertex(data: V): void {
-        this.vertices.push(data);
+    containsVertex(needle: Vertex<V>): boolean {
+        return this.vertices.some((v) => v.label === needle.label);
     }
 
-    addEdge(v1: number, v2: number, edge = 0): void {
-        if (
-            this.vertices[v1] === undefined ||
-            this.vertices[v2] === undefined
-        ) {
+    addVertex(vertex: Vertex<V>): void {
+        this.vertices.push(vertex);
+    }
+
+    addEdge(v1: Vertex<V>, v2: Vertex<V>, edgeData: E): void {
+        const index1 = this.vertices.findIndex((v) => v.label === v1.label);
+        const index2 = this.vertices.findIndex((v) => v.label === v2.label);
+        if (index1 === -1 || index2 === -1) {
             throw "Missing vertex";
         }
 
-        this.adjacencyMatrix[v1][v2] = edge;
-        this.adjacencyMatrix[v2][v1] = edge;
+        const edge: Edge<E> = {
+            data: edgeData,
+            label: index1,
+        };
+
+        this.adjacency_matrix[index1][index2] = edge;
+        this.adjacency_matrix[index2][index1] = edge;
     }
 
     // Breadth first search
-    isReachable(v1: number, v2: number): boolean {
-        const neighbours = new Queue<number>();
+    isReachable(v1: Vertex<V>, v2: Vertex<V>): boolean {
+        const queue = new Queue<Vertex<V>>();
         const visited = new HashTable<KeyNumber, boolean>(
-            this.adjacencyMatrix.length
+            this.adjacency_matrix.length
         );
-        neighbours.enqueue(v1);
+        queue.enqueue(v1);
 
-        while (!neighbours.isEmpty()) {
-            const vertex = neighbours.dequeue();
+        while (!queue.isEmpty()) {
+            const vertex = queue.dequeue();
 
             // If found, return
-            if (vertex === v2) {
+            if (vertex.label === v2.label) {
                 return true;
             }
 
-            // Add all neighbour vertices
-            this.adjacencyMatrix[vertex].forEach((e, v) => {
-                if (e !== -1 && !visited.get(new KeyNumber(v))) {
-                    // Mark node as visited
-                    visited.set(new KeyNumber(vertex), true);
-                    neighbours.enqueue(v);
+            this.getNeighbors(vertex).forEach((v) => {
+                if (!visited.hasKey(new KeyNumber(v.label))) {
+                    queue.enqueue(v);
+                    visited.set(new KeyNumber(v.label), true);
                 }
             });
         }

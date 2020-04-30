@@ -1,6 +1,6 @@
 import { swap } from "algorithms/swap/swap";
 
-export function heapadjust<T extends number>(
+export function heap_adjust<T extends number>(
     arr: T[],
     lo: number,
     hi: number

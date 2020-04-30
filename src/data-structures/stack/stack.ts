@@ -8,22 +8,22 @@ export class Stack<T> {
     }
 
     isEmpty(): boolean {
-        return this.list.size() === 0;
+        return this.list.getSize() === 0;
     }
 
     size(): number {
-        return this.list.size();
+        return this.list.getSize();
     }
 
     peek(): T {
-        return this.list.get(this.list.size() - 1);
+        return this.list.getFirst();
     }
 
     pop(): T {
-        return this.list.remove(this.list.size() - 1);
+        return this.list.removeFirst();
     }
 
     push(value: T): void {
-        this.list.add(value);
+        this.list.insertFirst(value);
     }
 }

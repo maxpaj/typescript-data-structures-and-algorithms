@@ -10,9 +10,14 @@ export class HashTable<K extends IKey<K>, V> {
         this.buckets = new Array(size).fill([]);
     }
 
+    hasKey(key: K) {
+        const bucket = this.getBucket(key);
+        return bucket.find((b) => b.key.equals(key)) !== undefined;
+    }
+
     set(key: K, value: V): V {
         const bucket = this.getBucket(key);
-        const foundIndex = bucket.findIndex(entry => entry.key.equals(key));
+        const foundIndex = bucket.findIndex((entry) => entry.key.equals(key));
 
         if (foundIndex === -1) {
             bucket.push({ key, value });
@@ -26,7 +31,7 @@ export class HashTable<K extends IKey<K>, V> {
 
     remove(key: K): V {
         const bucket = this.getBucket(key);
-        const index = bucket.findIndex(entry => entry.key.equals(key));
+        const index = bucket.findIndex((entry) => entry.key.equals(key));
         if (index === -1) {
             return null;
         }
@@ -35,7 +40,7 @@ export class HashTable<K extends IKey<K>, V> {
 
     get(key: K): V {
         const bucket = this.getBucket(key);
-        const found = bucket.find(entry => entry.key.equals(key));
+        const found = bucket.find((entry) => entry.key.equals(key));
         if (!found) {
             return null;
         }

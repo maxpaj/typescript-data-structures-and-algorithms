@@ -12,6 +12,15 @@ describe("HashTable", () => {
         });
     });
 
+    describe("hasKey", () => {
+        it("should determine if a key is present in the hash table", () => {
+            const t = new HashTable<KeyString, number>(10);
+            t.set(new KeyString("ABC"), 123);
+            expect(t.hasKey(new KeyString("ABC"))).to.equal(true);
+            expect(t.hasKey(new KeyString("DEF"))).to.equal(false);
+        });
+    });
+
     describe("set", () => {
         it("should set the key-value pair of the table to the given value and key combination", () => {
             const t = new HashTable<KeyString, number>(10);

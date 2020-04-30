@@ -1,11 +1,12 @@
 export function transform<T, S>(
-    first: Iterator<T>,
-    last: Iterator<T>,
-    op: (e: T) => S
+    arr: T[],
+    op: (e: T) => S,
+    lo: number = 0,
+    hi: number = arr.length - 1
 ) {
     const result = [];
-    while (first != last) {
-        result.push(op(first.next().value));
+    for (let i = lo; i < hi; i++) {
+        result.push(op(arr[i]));
     }
     return result;
 }
