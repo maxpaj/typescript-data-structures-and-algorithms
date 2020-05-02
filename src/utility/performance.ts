@@ -1,5 +1,3 @@
-import { ComparableNumber } from "./comparable";
-
 const ITERATIONS = 10;
 
 function run(arr: number[], f: (arr: number[]) => [number, number]): number {
