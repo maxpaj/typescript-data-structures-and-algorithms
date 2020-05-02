@@ -1,4 +1,4 @@
-export function merge<T extends number>(right: T[], left: T[]): T[] {
+export function merge(right: number[], left: number[]): number[] {
     const sorted = [];
     let rightIndex = 0,
         leftIndex = 0;

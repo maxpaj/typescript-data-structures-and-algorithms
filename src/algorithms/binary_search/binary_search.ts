@@ -1,4 +1,4 @@
-export function binary_search<T extends number>(
+export function binary_search<T>(
     arr: T[],
     search: T,
     lo = 0,

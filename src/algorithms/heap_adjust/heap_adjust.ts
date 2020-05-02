@@ -1,10 +1,6 @@
-import { swap } from "algorithms/swap/swap";
+import { swap } from "../swap/swap";
 
-export function heap_adjust<T extends number>(
-    arr: T[],
-    lo: number,
-    hi: number
-): void {
+export function heap_adjust(arr: number[], lo: number, hi: number): void {
     let root = lo;
 
     while (root * 2 + 1 <= hi) {

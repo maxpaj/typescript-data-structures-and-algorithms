@@ -1,5 +1,5 @@
-import { testArray } from "../../utility/performance";
 import { bubblesort } from "./bubblesort";
+import { testArray } from "../../../utility/performance";
 
 function test(arr: number[]): [number, number] {
     const start = process.hrtime();

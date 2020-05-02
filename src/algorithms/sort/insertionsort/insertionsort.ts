@@ -1,6 +1,6 @@
-import { swap } from "algorithms/swap/swap";
+import { swap } from "../../swap/swap";
 
-export function insertionsort<T extends number>(arr: T[]): void {
+export function insertionsort(arr: number[]): void {
     let i = 1;
     while (i < arr.length) {
         let j = i;

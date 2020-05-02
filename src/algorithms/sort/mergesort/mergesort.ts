@@ -1,6 +1,6 @@
-import { merge } from "algorithms/merge/merge";
+import { merge } from "../../merge/merge";
 
-export function mergesort<T extends number>(arr: T[]): T[] {
+export function mergesort(arr: number[]) {
     if (arr.length <= 1) {
         return arr;
     }

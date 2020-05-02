@@ -1,11 +1,3 @@
-/**
- * Sorts an array of positive integers
- * @param arr An array of positive integers to sort
- * @param base The base of the integers (default 10)
- * @param lo Starting position to sort from
- * @param hi Ending position to sort up until
- */
-
 export function countingsort(
     arr: number[],
     base = 10,

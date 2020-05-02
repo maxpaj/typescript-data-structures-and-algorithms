@@ -1,12 +1,12 @@
-import { partition } from "algorithms/partition/partition";
 import { heapsort } from "../heapsort/heapsort";
+import { partition } from "../../partition/partition";
 
-export function introsort<T extends number>(
-    arr: T[],
+export function introsort(
+    arr: number[],
     lo: number = 0,
     hi: number = arr.length - 1,
     maxdepth = Math.floor(Math.log(hi - lo)) * 2
-): void {
+) {
     const n = hi - lo;
 
     if (n <= 1) {
@@ -14,7 +14,7 @@ export function introsort<T extends number>(
     } else if (maxdepth === 0) {
         heapsort(arr, lo, hi);
     } else {
-        const p = partition(arr, e => e < arr[hi], lo, hi);
+        const p = partition(arr, (e) => e < arr[hi], lo, hi);
         introsort(arr, 0, p, maxdepth - 1);
         introsort(arr, p, n - 1, maxdepth - 1);
     }

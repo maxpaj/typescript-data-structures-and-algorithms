@@ -1,15 +1,15 @@
-export class MinHeap<T extends number> {
-    private heap: T[];
+export class MinHeap {
+    private heap: number[];
 
     constructor() {
         this.heap = [];
     }
 
-    isEmpty(): boolean {
+    isEmpty() {
         return this.heap.length === 0;
     }
 
-    insert(element: T): void {
+    insert(element: number) {
         // Add element last
         this.heap.push(element);
 
@@ -17,11 +17,11 @@ export class MinHeap<T extends number> {
         this.bubbleUp(this.heap.length - 1);
     }
 
-    size(): number {
+    size() {
         return this.heap.length;
     }
 
-    extract(): T {
+    extract() {
         // Store head
         const head = this.heap[0];
 
@@ -42,7 +42,7 @@ export class MinHeap<T extends number> {
         return head;
     }
 
-    private bubbleUp(currentIndex: number): void {
+    private bubbleUp(currentIndex: number) {
         const element = this.heap[currentIndex];
         const parentIndex = Math.floor((currentIndex - 1) / 2);
 
@@ -56,7 +56,7 @@ export class MinHeap<T extends number> {
         }
     }
 
-    private bubbleDown(currentIndex: number): void {
+    private bubbleDown(currentIndex: number) {
         // Find children index
         const leftIndex = currentIndex * 2 + 1;
         const rightIndex = currentIndex * 2 + 2;
@@ -87,9 +87,5 @@ export class MinHeap<T extends number> {
 
             this.bubbleDown(minIndex);
         }
-    }
-
-    toString(): string {
-        return this.heap.join(", ");
     }
 }

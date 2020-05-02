@@ -1,4 +1,4 @@
-import { swap } from "algorithms/swap/swap";
+import { swap } from "../swap/swap";
 
 export function reverse(arr: any[], lo = 0, hi = arr.length - 1) {
     for (let i = 0; i < (hi - lo) / 2; i++) {

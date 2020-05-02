@@ -1,10 +1,10 @@
-import { swap } from "algorithms/swap/swap";
+import { swap } from "../swap/swap";
 
-export function partition<T>(
-    arr: T[],
-    predicate: (e: T) => boolean,
-    lo: number,
-    hi: number
+export function partition(
+    arr: number[],
+    predicate: (e: number) => boolean,
+    lo: number = 0,
+    hi: number = arr.length - 1
 ): number {
     let index = lo;
 
