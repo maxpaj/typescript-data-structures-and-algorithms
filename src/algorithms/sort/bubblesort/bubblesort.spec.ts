@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { bubblesort } from "./bubblesort";
+import { is_sorted } from "../../is_sorted/is_sorted";
 
 describe("bubblesort", () => {
     const arrays = [
@@ -11,14 +12,10 @@ describe("bubblesort", () => {
     ];
 
     it("should sort an array correctly", () => {
-        arrays.forEach(unsorted => {
-            const sorted = bubblesort(unsorted);
-
-            expect(sorted.length).to.equal(unsorted.length);
-
-            for (let i = 0; i < sorted.length - 1; i++) {
-                expect(sorted[i]).to.be.lte(sorted[i + 1]);
-            }
+        arrays.forEach((unsorted) => {
+            const arr = bubblesort(unsorted);
+            expect(arr.length).to.equal(unsorted.length);
+            expect(is_sorted(arr)).to.equal(true);
         });
     });
 

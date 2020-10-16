@@ -1,8 +1,8 @@
 import { expect } from "chai";
-import { introsort } from "./introsort";
+import { shellsort } from "./shellsort";
 import { is_sorted } from "../../is_sorted/is_sorted";
 
-xdescribe("introsort", () => {
+describe("shellsort", () => {
     const arrays = [
         [1],
         [1, 1],
@@ -11,9 +11,9 @@ xdescribe("introsort", () => {
         [3, 7, 10, -4, 2, 3, 9, 3, 7, 10, -4, 2, 3, 9],
     ];
 
-    it("should sort an array correctly", () => {
-        arrays.forEach((arr) => {
-            introsort(arr);
+    arrays.forEach((arr) => {
+        it("should sort an array correctly", () => {
+            shellsort(arr);
             expect(is_sorted(arr)).to.equal(true);
         });
     });

@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { insertionsort } from "./insertionsort";
+import { is_sorted } from "../../is_sorted/is_sorted";
 
 describe("insertionsort", () => {
     const arrays = [
@@ -10,13 +11,10 @@ describe("insertionsort", () => {
         [3, 7, 10, -4, 2, 3, 9, 3, 7, 10, -4, 2, 3, 9],
     ];
 
-    arrays.forEach(arr => {
+    arrays.forEach((arr) => {
         it("should sort an array correctly", () => {
             insertionsort(arr);
-
-            for (let i = 0; i < arr.length - 1; i++) {
-                expect(arr[i]).to.be.lte(arr[i + 1]);
-            }
+            expect(is_sorted(arr)).to.equal(true);
         });
     });
 });
