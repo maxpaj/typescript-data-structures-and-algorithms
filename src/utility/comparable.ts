@@ -1,3 +1,11 @@
+export interface IComparable<T> {
+    compareTo(value: T): number;
+    greaterThan(value: T): boolean;
+    equals(value: T): boolean;
+    lesserThan(value: T): boolean;
+    lesserThanOrEqual(value: T): boolean;
+}
+
 export class ComparableNumber implements IComparable<ComparableNumber> {
     constructor(public number: number) {}
 
@@ -24,12 +32,4 @@ export class ComparableNumber implements IComparable<ComparableNumber> {
     static random(max = Number.MAX_SAFE_INTEGER): ComparableNumber {
         return new ComparableNumber(Math.round(Math.random() * max));
     }
-}
-
-export interface IComparable<T> {
-    compareTo(value: T): number;
-    greaterThan(value: T): boolean;
-    equals(value: T): boolean;
-    lesserThan(value: T): boolean;
-    lesserThanOrEqual(value: T): boolean;
 }
