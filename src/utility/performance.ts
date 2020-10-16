@@ -19,8 +19,8 @@ function scramble(arr: number[], size: number): void {
 export function testArray(
     sizes: number[],
     testFunction: (arr: number[]) => [number, number]
-): void {
-    const runs: { size: number; average: number; change: number }[] = [];
+) {
+    const runs: { size: number; average: number; delta: number }[] = [];
     const largest = sizes.reduce((largest, current) => {
         return current > largest ? current : largest;
     }, 0);
@@ -39,9 +39,9 @@ export function testArray(
         runs.push({
             size,
             average: average,
-            change: i !== 0 ? average / runs[0].average : 0,
+            delta: i !== 0 ? average / runs[0].average : 0,
         });
     }
 
-    console.table(runs);
+    return runs;
 }

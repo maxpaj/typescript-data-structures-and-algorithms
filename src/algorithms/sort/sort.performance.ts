@@ -9,8 +9,6 @@ import { selectionsort } from "./selectionsort/selectionsort";
 import { shellsort } from "./shellsort/shellsort";
 import { testArray } from "../../utility/performance";
 
-import { plot, stack, Plot } from "nodeplotlib";
-
 const algorithms = [
     bubblesort,
     countingsort,
