@@ -1,10 +1,10 @@
-import { GraphArray } from "./graph_array";
+import { GraphAdjacencyMatrix } from "./graph_adjacency_matrix";
 import { expect } from "chai";
 
-describe("Graph", () => {
-    describe("addVertext", () => {
+describe("GraphAdjacencyMatrix", () => {
+    describe("addVertex", () => {
         it("should add a vertex to the graph", () => {
-            const g = new GraphArray<string, number>(3);
+            const g = new GraphAdjacencyMatrix<string, number>(3);
             g.addVertex({ data: "A", label: 0 });
             expect(g.containsVertex({ data: "A", label: 0 })).to.equal(true);
             expect(g.containsVertex({ data: "B", label: 1 })).to.equal(false);
@@ -13,7 +13,7 @@ describe("Graph", () => {
 
     describe("addEdge", () => {
         it("should add an edge to the graph", () => {
-            const g = new GraphArray<string, number>(3);
+            const g = new GraphAdjacencyMatrix<string, number>(3);
             const vertices = [
                 {
                     data: "A",
@@ -42,7 +42,7 @@ describe("Graph", () => {
     });
 
     describe("getNeighbors", () => {
-        const g = new GraphArray<string, number>(3);
+        const g = new GraphAdjacencyMatrix<string, number>(3);
         const vertices = [
             {
                 data: "A",
@@ -70,7 +70,7 @@ describe("Graph", () => {
 
     describe("isReachable", () => {
         it("should return true if two nodes are reachable", () => {
-            const g1 = new GraphArray<string, number>(3);
+            const g1 = new GraphAdjacencyMatrix<string, number>(3);
             const vertices = [
                 { data: "A", label: 0 },
                 { data: "B", label: 1 },
@@ -89,7 +89,7 @@ describe("Graph", () => {
 
             expect(g1.isReachable(vertices[0], vertices[1])).to.equal(true);
 
-            const g2 = new GraphArray<string, number>(10);
+            const g2 = new GraphAdjacencyMatrix<string, number>(10);
 
             vertices.forEach((v) => {
                 g2.addVertex(v);
@@ -105,7 +105,7 @@ describe("Graph", () => {
         });
 
         it("should return false if two nodes are not reachable", () => {
-            const g1 = new GraphArray<number, number>(3);
+            const g1 = new GraphAdjacencyMatrix<number, number>(3);
 
             const vertices = [
                 { data: 0, label: 0 },

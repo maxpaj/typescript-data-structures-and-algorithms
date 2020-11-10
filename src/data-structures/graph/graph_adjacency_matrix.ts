@@ -1,9 +1,9 @@
-import { Queue } from "../queue/queue";
+import { ListQueue } from "../queue/list-queue";
 import { HashTable } from "../hashtable/hashtable";
 import { KeyNumber } from "../../utility/keys";
 import { Graph, Edge, Vertex } from "./graph";
 
-export class GraphArray<V, E> implements Graph<V, E> {
+export class GraphAdjacencyMatrix<V, E> implements Graph<V, E> {
     private adjacency_matrix: Edge<E>[][];
     private vertices: Vertex<V>[];
 
@@ -36,7 +36,6 @@ export class GraphArray<V, E> implements Graph<V, E> {
     getNeighbors(v: Vertex<V>) {
         const index = this.vertices.findIndex((ve) => ve.label === v.label);
 
-        // Map edges to vertices
         const mapped = this.adjacency_matrix[index].map(
             (v, i) => v !== null && this.vertices[i]
         );
@@ -68,9 +67,8 @@ export class GraphArray<V, E> implements Graph<V, E> {
         this.adjacency_matrix[index2][index1] = edge;
     }
 
-    // Breadth first search
     isReachable(v1: Vertex<V>, v2: Vertex<V>): boolean {
-        const queue = new Queue<Vertex<V>>();
+        const queue = new ListQueue<Vertex<V>>();
         const visited = new HashTable<KeyNumber, boolean>(
             this.adjacency_matrix.length
         );
@@ -79,7 +77,6 @@ export class GraphArray<V, E> implements Graph<V, E> {
         while (!queue.isEmpty()) {
             const vertex = queue.dequeue();
 
-            // If found, return
             if (vertex.label === v2.label) {
                 return true;
             }

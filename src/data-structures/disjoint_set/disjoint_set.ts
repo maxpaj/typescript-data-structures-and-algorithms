@@ -1,3 +1,6 @@
+/**
+ *
+ */
 export class DisjointSet {
     private id: number[];
     private sizes: number[];
@@ -63,7 +66,6 @@ export class DisjointSet {
         return this.nsets;
     }
 
-    // TODO
     toString() {
         let str = "";
         for (let i = 0; i < this.nsets; i++) {

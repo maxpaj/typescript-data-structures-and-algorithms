@@ -1,5 +1,8 @@
-import { Stack } from "../stack/stack";
+import { ListStack } from "../stack/list-stack";
 
+/**
+ *
+ */
 export class BinarySearchTree<K extends number, V> implements Iterable<V> {
     private leftChild: BinarySearchTree<K, V> = null;
     private rightChild: BinarySearchTree<K, V> = null;
@@ -11,6 +14,11 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
         this.value = value;
     }
 
+    /**
+     *
+     * @param key
+     * @param value
+     */
     insert(key: K, value: V): void {
         if (key < this.key) {
             if (this.leftChild === null) {
@@ -27,6 +35,10 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
         }
     }
 
+    /**
+     *
+     * @param key
+     */
     remove(key: K): void {
         if (this.leftChild !== null && key < this.key) {
             if (this.leftChild.key === key) {
@@ -43,6 +55,10 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
         }
     }
 
+    /**
+     *
+     * @param key
+     */
     search(key: K): V {
         if (this.key === key) {
             return this.value;
@@ -56,6 +72,10 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
         return null;
     }
 
+    /**
+     *
+     * @param f
+     */
     inorder(f: (node: BinarySearchTree<K, V>) => void): void {
         if (this.leftChild) {
             this.leftChild.inorder(f);
@@ -71,7 +91,7 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
     }
 
     begin(): Iterator<V> {
-        const stack = new Stack<BinarySearchTree<K, V>>();
+        const stack = new ListStack<BinarySearchTree<K, V>>();
         let current = this as BinarySearchTree<K, V>;
 
         return {

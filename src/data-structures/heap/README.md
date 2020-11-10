@@ -1,7 +1,7 @@
 # Heap
 
 -   It's a binary tree
--   Each node has a value that is greater than (max-heap) both of it's children (min-heap = lesser than)
+-   Each node has a value that is greater than (max-heap) both of it's children (min-heap = lesser than) (heap property)
 -   It's a complete binary tree (all levels are filled except perhaps the last level)
 
 ## Applications

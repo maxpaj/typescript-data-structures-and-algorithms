@@ -1,10 +1,10 @@
-import { Queue } from "./queue";
+import { ListQueue } from "./list-queue";
 import { expect } from "chai";
 
 describe("Queue", () => {
     describe("enqueue", () => {
         it("should add an element to the end of the queue", () => {
-            const q = new Queue();
+            const q = new ListQueue();
             q.enqueue(1);
             q.enqueue(2);
             q.enqueue(3);
@@ -15,7 +15,7 @@ describe("Queue", () => {
 
     describe("dequeue", () => {
         it("should remove the first element of the queue", () => {
-            const q = new Queue();
+            const q = new ListQueue();
             q.enqueue(1);
             q.enqueue(2);
 

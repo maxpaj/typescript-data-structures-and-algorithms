@@ -1,10 +1,10 @@
-import { Stack } from "./stack";
+import { ListStack } from "./list-stack";
 import { expect } from "chai";
 
 describe("Stack", () => {
     describe("pop", () => {
         it("should remove top-most element of the stack", () => {
-            const s = new Stack();
+            const s = new ListStack();
             s.push(1);
             s.push(2);
             s.push(3);
@@ -19,7 +19,7 @@ describe("Stack", () => {
 
     describe("push", () => {
         it("should add an element to the top of the stack", () => {
-            const s = new Stack();
+            const s = new ListStack();
             s.push(12);
             s.push(23);
             s.push(34);
