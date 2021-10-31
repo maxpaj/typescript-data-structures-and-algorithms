@@ -19,7 +19,9 @@
     "scripts": {
         "watch": "mocha -r ts-node/register -r tsconfig-paths/register --extensions ts --watch --watch-files src 'src/**/*.spec.ts'",
         "test": "mocha -r ts-node/register -r tsconfig-paths/register --extensions ts 'src/**/*.spec.ts'",
-        "lint": "eslint . --ext .ts"
+        "lint": "eslint . --ext .ts",
+        "profile": "node --prof",
+        "flamegraph": "run() { node --prof $1; node --prof-process --preprocess -j isolate*.log | flamebearer && open-cli ./flamegraph.html; }; run"
     },
     "repository": {
         "type": "git",
