@@ -1,2 +1,1 @@
-# Introduction
-I'd like to develop some intuition about algorithms.
+For learning purposes only. No guarantees for correctness of implementations.
