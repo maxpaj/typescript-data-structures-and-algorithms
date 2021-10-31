@@ -10,12 +10,12 @@ describe("LinkedList", () => {
                 list.insertLast(n);
             });
 
-            expect(list.getFirst()).to.equal(9);
+            expect(list.getFirst().data).to.equal(9);
             expect(list.getSize()).to.equal(5);
 
             list.insertLast(1);
 
-            expect(list.getFirst()).to.equal(9);
+            expect(list.getFirst().data).to.equal(9);
             expect(list.getSize()).to.equal(6);
         });
     });
@@ -29,7 +29,7 @@ describe("LinkedList", () => {
             });
 
             const removed = list.removeFirst();
-            expect(removed).to.equal(9);
+            expect(removed.data).to.equal(9);
         });
     });
 

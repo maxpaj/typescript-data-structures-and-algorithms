@@ -8,11 +8,11 @@ export class LinkedList<T> implements List<T> {
         this.node === null;
     }
 
-    getFirst(): T {
-        return this.node.data;
+    getFirst() {
+        return this.node;
     }
 
-    getLast(): ListNode<T> {
+    getLast() {
         let current = this.node;
         while (current.next !== undefined) {
             current = current.next;
@@ -20,7 +20,7 @@ export class LinkedList<T> implements List<T> {
         return current;
     }
 
-    getSize(): number {
+    getSize() {
         return this.size;
     }
 
@@ -32,7 +32,7 @@ export class LinkedList<T> implements List<T> {
      *
      * @param index
      */
-    getElementAt(index = 0): T {
+    getElementAt(index = 0) {
         return this.findNodeByIndex(this.node, index).data;
     }
 
@@ -44,7 +44,7 @@ export class LinkedList<T> implements List<T> {
         const next = this.node.next;
         this.node = next;
         this.size--;
-        return current.data;
+        return current;
     }
 
     /**

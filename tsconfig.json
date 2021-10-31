@@ -1,10 +1,18 @@
 {
+    "target": "es2015",
+    "lib": [
+        "esnext"
+    ],
     "compilerOptions": {
         "baseUrl": "./src",
         "downlevelIteration": true,
         "paths": {
-            "*": ["./*"]
+            "*": [
+                "./*"
+            ]
         }
     },
-    "include": ["./src/**/*.ts"]
+    "include": [
+        "./src/**/*.ts"
+    ]
 }

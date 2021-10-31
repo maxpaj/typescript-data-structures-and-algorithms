@@ -17,11 +17,11 @@ export class ListStack<T> implements Stack<T> {
     }
 
     peek(): T {
-        return this.list.getFirst();
+        return this.list.getFirst().data;
     }
 
     pop(): T {
-        return this.list.removeFirst();
+        return this.list.removeFirst().data;
     }
 
     push(value: T): void {

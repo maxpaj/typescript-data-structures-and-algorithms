@@ -9,10 +9,10 @@ export class ListNode<T> {
 
 export interface List<T> extends Iterable<T> {
     clear(): void;
-    getFirst(): T;
-    getLast(): T;
+    getFirst(): ListNode<T>;
+    getLast(): ListNode<T>;
     getSize(): number;
     isEmpty(): boolean;
     getElementAt(index: number): T;
-    removeFirst(): T;
+    removeFirst(): ListNode<T>;
 }

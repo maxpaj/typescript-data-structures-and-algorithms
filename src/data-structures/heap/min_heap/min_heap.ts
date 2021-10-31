@@ -8,11 +8,11 @@ export class MinHeap {
         this.heap = [];
     }
 
-    isEmpty() {
+    isEmpty(): boolean {
         return this.heap.length === 0;
     }
 
-    insert(element: number) {
+    insert(element: number): void {
         // Add element last
         this.heap.push(element);
 
@@ -20,11 +20,11 @@ export class MinHeap {
         this.bubbleUp(this.heap.length - 1);
     }
 
-    size() {
+    size(): number {
         return this.heap.length;
     }
 
-    extract() {
+    extract(): number {
         // Store head
         const head = this.heap[0];
 
@@ -45,7 +45,7 @@ export class MinHeap {
         return head;
     }
 
-    private bubbleUp(currentIndex: number) {
+    private bubbleUp(currentIndex: number): void {
         const element = this.heap[currentIndex];
         const parentIndex = Math.floor((currentIndex - 1) / 2);
 
@@ -59,7 +59,7 @@ export class MinHeap {
         }
     }
 
-    private bubbleDown(currentIndex: number) {
+    private bubbleDown(currentIndex: number): void {
         // Find children index
         const leftIndex = currentIndex * 2 + 1;
         const rightIndex = currentIndex * 2 + 2;

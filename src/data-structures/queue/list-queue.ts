@@ -17,7 +17,7 @@ export class ListQueue<T> implements Queue<T> {
     }
 
     peek(): T {
-        return this.list.getFirst();
+        return this.list.getFirst().data;
     }
 
     enqueue(value: T): void {
