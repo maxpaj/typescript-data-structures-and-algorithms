@@ -1,6 +1,9 @@
 import { LinkedList } from "../list/linked_list";
 import { Stack } from "./stack";
 
+/**
+ * Stack data structure implementation using a linked list.
+ */
 export class ListStack<T> implements Stack<T> {
     private list: LinkedList<T>;
 

@@ -1,6 +1,9 @@
 import { LinkedList } from "../list/linked_list";
 import { Queue } from "./queue";
 
+/**
+ * Queue data structure implementation using linked list.
+ */
 export class ListQueue<T> implements Queue<T> {
     private list: LinkedList<T>;
 

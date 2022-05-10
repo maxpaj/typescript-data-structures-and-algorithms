@@ -28,17 +28,10 @@ export class LinkedList<T> implements List<T> {
         return this.node === undefined;
     }
 
-    /**
-     *
-     * @param index
-     */
     getElementAt(index = 0) {
         return this.findNodeByIndex(this.node, index).data;
     }
 
-    /**
-     * Remove the first element of the list
-     */
     removeFirst() {
         const current = this.node;
         const next = this.node.next;
@@ -47,10 +40,6 @@ export class LinkedList<T> implements List<T> {
         return current;
     }
 
-    /**
-     *
-     * @param index
-     */
     removeAt(index: number): T {
         if (index === 0) {
             const v = this.node.data;
@@ -71,17 +60,10 @@ export class LinkedList<T> implements List<T> {
         return value;
     }
 
-    /**
-     *
-     * @param value
-     */
     insertLast(value: T) {
         this.insertAt(this.size - 1, value);
     }
 
-    /**
-     *
-     */
     insertFirst(value: T) {
         const next = this.node;
         this.node = new ListNode(value);
@@ -89,11 +71,6 @@ export class LinkedList<T> implements List<T> {
         this.size++;
     }
 
-    /**
-     *
-     * @param index
-     * @param value
-     */
     insertAt(index: number, value: T): void {
         const newNode = new ListNode<T>(value);
 

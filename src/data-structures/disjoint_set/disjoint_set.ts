@@ -1,5 +1,5 @@
 /**
- *
+ * Disjoint set data structure.
  */
 export class DisjointSet {
     private id: number[];
@@ -18,18 +18,20 @@ export class DisjointSet {
     }
 
     /**
-     * Determines if two nodes are in the same set
-     * @param p
-     * @param q
+     * Determines if two nodes are in the same set.
+     *
+     * @param p The first node.
+     * @param q The second node.
      */
     connected(p: number, q: number) {
         return this.find(p) === this.find(q);
     }
 
     /**
-     * Merges the sets where p, respectively q, are present
-     * @param p
-     * @param q
+     * Merges the sets where p, respectively q, are present.
+     *
+     * @param p The first node.
+     * @param q The second node.
      */
     union(p: number, q: number) {
         let i = this.find(p);
@@ -52,8 +54,9 @@ export class DisjointSet {
     }
 
     /**
-     * Find the set id associated with the node at position p
-     * @param p
+     * Find the set id associated with the node at position p.
+     *
+     * @param p The node to find the set id for.
      */
     find(p: number) {
         while (this.id[p] !== p) {

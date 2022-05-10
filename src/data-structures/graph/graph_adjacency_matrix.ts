@@ -3,6 +3,9 @@ import { HashTable } from "../hashtable/hashtable";
 import { KeyNumber } from "../../utility/keys";
 import { Graph, Edge, Vertex } from "./graph";
 
+/**
+ * Graph data structure implemented using an adjacency matrix.
+ */
 export class GraphAdjacencyMatrix<V, E> implements Graph<V, E> {
     private adjacency_matrix: Edge<E>[][];
     private vertices: Vertex<V>[];
@@ -10,13 +13,15 @@ export class GraphAdjacencyMatrix<V, E> implements Graph<V, E> {
     constructor(number_of_vertices: number) {
         this.vertices = new Array<Vertex<V>>();
         this.adjacency_matrix = new Array(number_of_vertices);
-        for (let i = 0; i < this.adjacency_matrix.length; i++) {
-            this.adjacency_matrix[i] = new Array(number_of_vertices).fill(null);
-        }
+        this.clear();
     }
 
     clear(): void {
-        throw new Error("Method not implemented.");
+        for (let i = 0; i < this.adjacency_matrix.length; i++) {
+            this.adjacency_matrix[i] = new Array(
+                this.adjacency_matrix.length
+            ).fill(null);
+        }
     }
 
     getEdges(): E[] {
@@ -43,28 +48,29 @@ export class GraphAdjacencyMatrix<V, E> implements Graph<V, E> {
         return mapped.filter((e) => e);
     }
 
-    containsVertex(needle: Vertex<V>): boolean {
-        return this.vertices.some((v) => v.label === needle.label);
+    containsVertex(v1: Vertex<V>): boolean {
+        return this.vertices.some((v) => v1.label === v.label);
     }
 
-    addVertex(vertex: Vertex<V>): void {
-        this.vertices.push(vertex);
+    addVertex(v: Vertex<V>): void {
+        this.vertices.push(v);
     }
 
-    addEdge(v1: Vertex<V>, v2: Vertex<V>, edgeData: E): void {
+    addEdge(v1: Vertex<V>, v2: Vertex<V>, edge: E): void {
         const index1 = this.vertices.findIndex((v) => v.label === v1.label);
         const index2 = this.vertices.findIndex((v) => v.label === v2.label);
+
         if (index1 === -1 || index2 === -1) {
             throw "Missing vertex";
         }
 
-        const edge: Edge<E> = {
-            data: edgeData,
+        const e: Edge<E> = {
+            data: edge,
             label: index1,
         };
 
-        this.adjacency_matrix[index1][index2] = edge;
-        this.adjacency_matrix[index2][index1] = edge;
+        this.adjacency_matrix[index1][index2] = e;
+        this.adjacency_matrix[index2][index1] = e;
     }
 
     isReachable(v1: Vertex<V>, v2: Vertex<V>): boolean {

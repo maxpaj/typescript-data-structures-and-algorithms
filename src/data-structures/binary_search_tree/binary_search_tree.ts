@@ -1,7 +1,9 @@
 import { ListStack } from "../stack/list-stack";
 
 /**
- *
+ * Binary search tree data structure. A binary tree where each node to the left
+ * of the parent node is less than the parent node and each node to the right
+ * of the parent node is greater than the parent node.
  */
 export class BinarySearchTree<K extends number, V> implements Iterable<V> {
     private leftChild: BinarySearchTree<K, V> = null;
@@ -15,9 +17,10 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
     }
 
     /**
+     * Insert a new node into the tree.
      *
-     * @param key
-     * @param value
+     * @param key The key of the node to insert.
+     * @param value The value of the node to insert.
      */
     insert(key: K, value: V): void {
         if (key < this.key) {
@@ -36,8 +39,9 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
     }
 
     /**
+     * Remove a node from the tree.
      *
-     * @param key
+     * @param key The key of the node to remove.
      */
     remove(key: K): void {
         if (this.leftChild !== null && key < this.key) {
@@ -56,8 +60,9 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
     }
 
     /**
+     * Search the tree for a node with the given key.
      *
-     * @param key
+     * @param key The key of the node to search for.
      */
     search(key: K): V {
         if (this.key === key) {
@@ -73,8 +78,9 @@ export class BinarySearchTree<K extends number, V> implements Iterable<V> {
     }
 
     /**
+     * In order traversal of the tree. For each node, apply function f to the node.
      *
-     * @param f
+     * @param f The function to apply to each node.
      */
     inorder(f: (node: BinarySearchTree<K, V>) => void): void {
         if (this.leftChild) {

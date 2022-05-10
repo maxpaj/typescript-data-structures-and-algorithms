@@ -1,5 +1,5 @@
 /**
- *
+ * Min heap data structure.
  */
 export class MinHeap {
     private heap: number[];
@@ -8,22 +8,42 @@ export class MinHeap {
         this.heap = [];
     }
 
+    /**
+     * Determines if the heap is empty.
+     *
+     * @returns True if the heap is empty, false otherwise.
+     */
     isEmpty(): boolean {
         return this.heap.length === 0;
     }
 
-    insert(element: number): void {
+    /**
+     * Insert an element into the heap.
+     *
+     * @param e The element to insert.
+     */
+    insert(e: number): void {
         // Add element last
-        this.heap.push(element);
+        this.heap.push(e);
 
         // Bubble up the element
         this.bubbleUp(this.heap.length - 1);
     }
 
+    /**
+     * Determine the current size of the heap.
+     *
+     * @returns The current size of the heap.
+     */
     size(): number {
         return this.heap.length;
     }
 
+    /**
+     * Remove the top of the heap.
+     *
+     * @returns The top of the heap.
+     */
     extract(): number {
         // Store head
         const head = this.heap[0];
