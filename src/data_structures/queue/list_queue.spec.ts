@@ -1,4 +1,4 @@
-import { ListQueue } from "./list-queue";
+import { ListQueue } from "./list_queue";
 import { expect } from "chai";
 
 describe("Queue", () => {

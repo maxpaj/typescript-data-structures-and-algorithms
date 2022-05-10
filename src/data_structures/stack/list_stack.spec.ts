@@ -1,4 +1,4 @@
-import { ListStack } from "./list-stack";
+import { ListStack } from "./list_stack";
 import { expect } from "chai";
 
 describe("Stack", () => {

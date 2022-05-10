@@ -1,4 +1,4 @@
-import { ListStack } from "../stack/list-stack";
+import { ListStack } from "../stack/list_stack";
 
 /**
  * Binary search tree data structure. A binary tree where each node to the left

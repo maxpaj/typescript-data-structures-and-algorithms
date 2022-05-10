@@ -1,4 +1,4 @@
-import { IKey } from "../data-structures/hashtable/hashtable";
+import { IKey } from "../data_structures/hashtable/hashtable";
 
 export class KeyNumber implements IKey<KeyNumber> {
     private key: number;

@@ -1,4 +1,4 @@
-import { ListQueue } from "../queue/list-queue";
+import { ListQueue } from "../queue/list_queue";
 import { HashTable } from "../hashtable/hashtable";
 import { KeyNumber } from "../../utility/keys";
 import { Graph, Edge, Vertex } from "./graph";
